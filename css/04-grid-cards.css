@@ -1,0 +1,25 @@
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:14px;
+}
+
+.card{
+  grid-column: span 12;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow: var(--shadow);
+  padding:16px;
+}
+.card.compact{ padding:12px; }
+
+.cols-6{ grid-column: span 6; }
+.cols-7{ grid-column: span 7; }
+.cols-5{ grid-column: span 5; }
+.cols-4{ grid-column: span 4; }
+.cols-8{ grid-column: span 8; }
+
+@media (max-width: 900px){
+  .cols-6,.cols-7,.cols-5,.cols-4,.cols-8{ grid-column: span 12; }
+}

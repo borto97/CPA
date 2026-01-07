@@ -1,0 +1,26 @@
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color:var(--muted);
+  font-size:12px;
+  font-family:var(--mono);
+}
+.tag.ok{ border-color: rgba(66,211,146,.35); color:#bff3da; }
+.tag.warn{ border-color: rgba(251,191,36,.35); color:#ffe2a6; }
+.tag.bad{ border-color: rgba(251,113,133,.35); color:#ffc1cb; }
+
+.kpi{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.kpi .box{
+  flex:1 1 220px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  border-radius:14px;
+  padding:12px;
+}
+.kpi .box b{ display:block; font-size:13px; }
+.kpi .box span{ display:block; font-size:12px; color:var(--muted); margin-top:6px; }

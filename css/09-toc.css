@@ -1,0 +1,176 @@
+/* =========================
+   TOC / Sumário retrátil (nav#toc)
+   ========================= */
+#toc{
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: var(--toc-w);
+  height: calc(100vh - (var(--header-h) + 21px));
+  padding: 12px;
+  overflow: auto;
+
+  background: linear-gradient(180deg, rgba(18,26,51,.94), rgba(15,23,48,.92));
+  border: 1px solid rgba(255,255,255,.12);
+  border-left: 0;
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+
+  transform: translateX(calc(-100% + var(--toc-handle)));
+  transition: transform .18s ease;
+  z-index: 9999;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) transparent;
+}
+
+#toc.is-open,
+#toc.is-pinned{ transform: translateX(0); }
+
+#toc .toc__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+  padding-bottom:10px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+#toc .toc__title{
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color: var(--muted);
+  opacity:.95;
+}
+
+#toc .toc__pin{
+  appearance:none;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+  border-radius: 12px;
+  padding: 6px 8px;
+  cursor:pointer;
+  font-size:13px;
+  line-height:1;
+}
+#toc .toc__pin:hover{ background: rgba(255,255,255,.06); }
+#toc .toc__pin.is-active{ color: var(--text); border-color: rgba(124,92,255,.35); }
+
+#toc .toc__list{ list-style:none; padding:0; margin:0; }
+#toc .toc__item{ margin:6px 0; }
+
+#toc .toc__link{
+  display:block;
+  padding:9px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-size:13px;
+  text-decoration:none;
+  position: relative;
+}
+#toc .toc__link:hover{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.10);
+  text-decoration:none;
+}
+
+#toc .toc__link.is-active{
+  background: rgba(124,92,255,.16);
+  border-color: rgba(124,92,255,.28);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(124,92,255,.18);
+}
+#toc .toc__link.is-active::before{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:8px;
+  bottom:8px;
+  width:3px;
+  border-radius: 999px;
+  background: rgba(124,92,255,.75);
+}
+
+/* níveis */
+#toc .toc__item[data-level="2"] .toc__link{
+  font-weight: 650;
+  color: rgba(232,236,255,.92);
+}
+#toc .toc__item[data-level="3"] .toc__link{
+  padding-left: 18px;
+  font-weight: 500;
+  color: rgba(185,194,255,.92);
+}
+#toc .toc__item[data-level="4"] .toc__link{
+  padding-left: 30px;
+  opacity:.95;
+}
+
+/* zona sensível na borda esquerda */
+.toc-hover-zone{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--toc-edge);
+  height: 100vh;
+  z-index: 10000;
+  background: transparent;
+}
+
+/* scrollbar webkit do TOC */
+#toc::-webkit-scrollbar{ width: 8px; }
+#toc::-webkit-scrollbar-track{ background: transparent; }
+#toc::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 10px;
+}
+#toc::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,.28);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* =========================
+   ✅ Conteúdo vs TOC (correto)
+   - desktop: fechado -> reserva a "alça" (handle)
+   - desktop: abre/pina -> reduz área útil (padding-left)
+   - mobile: overlay (não mexe no conteúdo)
+   ========================= */
+
+/* desktop/tablet: reserva a alça quando fechado */
+@media (min-width: 961px){
+  body{
+    padding-left: var(--toc-handle);
+  }
+
+  body.toc-open,
+  body.toc-pinned{
+    padding-left: var(--toc-w);
+  }
+}
+
+/* mobile: TOC overlay, não empurra nem “encolhe” a página */
+@media (max-width: 960px){
+  body{
+    padding-left: 0;
+  }
+
+  body.toc-open,
+  body.toc-pinned{
+    padding-left: 0;
+  }
+
+  #toc{
+    top: 74px;
+    height: calc(100vh - 92px);
+  }
+}
