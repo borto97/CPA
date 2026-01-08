@@ -1,1139 +1,1170 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CPA (2026) | Módulo 1 — Estrutura e dinâmica do SFN (20%)</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">
-        <a href="./index.html" style="text-decoration:none;">CPA</a>
-        <span class="badge">Modelo 2026</span>
-      </div>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <a href="./index.html" style="text-decoration:none;">CPA</a>
+          <span class="badge">Modelo 2026</span>
+        </div>
 
-      <div class="links">
-        <a class="pill" href="./01_sfn.html" aria-current="page">SFN (20%)</a>
-        <a class="pill" href="./02_produtos.html">Produtos (40%)</a>
-        <a class="pill" href="./03_relacionamento_cliente.html">Relacionamento (30%)</a>
-        <a class="pill" href="./04_inovacao_mercado.html">Inovação (10%)</a>
+        <div class="links">
+          <a class="pill" href="./01_sfn.html" aria-current="page">SFN (20%)</a>
+          <a class="pill" href="./02_produtos.html">Produtos (40%)</a>
+          <a class="pill" href="./03_relacionamento_cliente.html">Relacionamento (30%)</a>
+          <a class="pill" href="./04_inovacao_mercado.html">Inovação (10%)</a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- TOC retrátil (mesma metodologia do antigo) -->
-<nav id="toc" data-toc-scope="main.wrap" data-toc-levels="2,3">
-  <div class="toc__header">
-    <div class="toc__title">Sumário</div>
-    <button id="toc-pin" class="toc__pin" type="button" title="Fixar sumário" aria-label="Fixar sumário">📌</button>
-  </div>
-  <ul class="toc__list"></ul>
-</nav>
+  <!-- TOC retrátil (mesma metodologia do antigo) -->
+  <nav id="toc" data-toc-scope="main.wrap" data-toc-levels="2,3">
+    <div class="toc__header">
+      <div class="toc__title">Sumário</div>
+      <button id="toc-pin" class="toc__pin" type="button" title="Fixar sumário" aria-label="Fixar sumário">📌</button>
+    </div>
+    <ul class="toc__list"></ul>
+  </nav>
 
-<main class="wrap">
+  <main class="wrap layout">
 
-  <h1>Estrutura e dinâmica do Sistema Financeiro Nacional (SFN) — COMPLETO (CPA 2026)</h1>
+    <h1>Estrutura e dinâmica do Sistema Financeiro Nacional (SFN) — COMPLETO (CPA 2026)</h1>
 
-  <!-- =========================
+    <!-- =========================
        1.1 SFN
   ========================== -->
-  <section class="card anchor" id="sfn-visao">
-    <h2>1.1) Sistema Financeiro Nacional — visão geral (o mapa que evita erro bobo)</h2>
+    <section class="card anchor" id="sfn-visao">
+      <h2>1.1) Sistema Financeiro Nacional — visão geral (o mapa que evita erro bobo)</h2>
 
-    <div class="callout">
-      <b>Mapa mental do SFN (prova AMA):</b>
-      <div class="flow" style="margin-top:10px;">
-        <div class="node"><strong>Normatiza</strong><span>Define regras/diretrizes</span></div>
-        <div class="arrow">→</div>
-        <div class="node"><strong>Supervisiona</strong><span>Regula + fiscaliza</span></div>
-        <div class="arrow">→</div>
-        <div class="node"><strong>Opera</strong><span>Instituições e participantes</span></div>
-        <div class="arrow">→</div>
-        <div class="node"><strong>Infraestrutura</strong><span>Pagamentos, custódia e liquidação</span></div>
-      </div>
-    </div>
-
-    <div class="hr"></div>
-
-    <div class="kpi">
-      <div class="box">
-        <b>Normativos (topo)</b>
-        <span><b>CMN</b>, <b>CNSP</b>, <b>CNPC</b> — definem diretrizes e normas.</span>
-      </div>
-      <div class="box">
-        <b>Supervisão</b>
-        <span><b>BCB</b>, <b>CVM</b>, <b>SUSEP</b>, <b>PREVIC</b> — regulam/supervisionam mercados e entidades.</span>
-      </div>
-      <div class="box">
-        <b>Operadores</b>
-        <span>Bancos/caixas, cooperativas, corretoras/distribuidoras, IPs, consórcios, fintechs etc.</span>
-      </div>
-      <div class="box">
-        <b>Autorregulação e apoio</b>
-        <span><b>ANBIMA</b>, <b>APIMEC</b>, <b>Planejar</b>, <b>ANCORD</b>, <b>FGC/FGCCoop</b>.</span>
-      </div>
-      <div class="box">
-        <b>Infraestrutura</b>
-        <span><b>SPB/SPI</b>, <b>Selic</b>, <b>B3</b>, clearings, depositários, registradoras.</span>
-      </div>
-      <div class="box">
-        <b>Pegadinha-mãe</b>
-        <span><b>Normativo ≠ supervisor ≠ operador</b>. Questão mistura verbos: “define” / “executa” / “fiscaliza”.</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="card anchor" id="sfn-normativos">
-    <h2>1.1.1) Órgãos normativos — características, funções e objetivos</h2>
-    <div class="tag warn">Cai: “quem define diretrizes / quem normatiza”</div>
-
-    <div class="grid">
-      <div class="card compact cols-4">
-        <h3>CMN — Conselho Monetário Nacional</h3>
-        <ul>
-          <li>Órgão <b>normativo máximo</b> do SFN.</li>
-          <li>Define diretrizes da política <b>monetária</b>, <b>creditícia</b> e <b>cambial</b>.</li>
-          <li><b>Não</b> executa instrumentos (open market/compulsório/redesconto).</li>
-        </ul>
-        <div class="callout" style="margin-top:10px;"><b>Frase de prova:</b> “estabelece diretrizes gerais” → CMN ✅</div>
+      <div class="callout">
+        <b>Mapa mental do SFN (prova AMA):</b>
+        <div class="flow" style="margin-top:10px;">
+          <div class="node"><strong>Normatiza</strong><span>Define regras/diretrizes</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><strong>Supervisiona</strong><span>Regula + fiscaliza</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><strong>Opera</strong><span>Instituições e participantes</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><strong>Infraestrutura</strong><span>Pagamentos, custódia e liquidação</span></div>
+        </div>
       </div>
 
-      <div class="card compact cols-4">
-        <h3>CNSP — Conselho Nacional de Seguros Privados</h3>
-        <ul>
-          <li>Órgão normativo do mercado de <b>seguros</b>.</li>
-          <li>Define diretrizes e normas para o setor supervisionado pela <b>SUSEP</b>.</li>
-          <li>Alinha regras para seguros/ressseguros/capitalização/previdência aberta (no plano normativo).</li>
-        </ul>
-        <div class="tag ok">Norma (CNSP) → Supervisiona (SUSEP)</div>
+      <div class="hr"></div>
+
+      <div class="kpi">
+        <div class="box">
+          <b>Normativos (topo)</b>
+          <span><b>CMN</b>, <b>CNSP</b>, <b>CNPC</b> — definem diretrizes e normas.</span>
+        </div>
+        <div class="box">
+          <b>Supervisão</b>
+          <span><b>BCB</b>, <b>CVM</b>, <b>SUSEP</b>, <b>PREVIC</b> — regulam/supervisionam mercados e entidades.</span>
+        </div>
+        <div class="box">
+          <b>Operadores</b>
+          <span>Bancos/caixas, cooperativas, corretoras/distribuidoras, IPs, consórcios, fintechs etc.</span>
+        </div>
+        <div class="box">
+          <b>Autorregulação e apoio</b>
+          <span><b>ANBIMA</b>, <b>APIMEC</b>, <b>Planejar</b>, <b>ANCORD</b>, <b>FGC/FGCCoop</b>.</span>
+        </div>
+        <div class="box">
+          <b>Infraestrutura</b>
+          <span><b>SPB/SPI</b>, <b>Selic</b>, <b>B3</b>, clearings, depositários, registradoras.</span>
+        </div>
+        <div class="box">
+          <b>Pegadinha-mãe</b>
+          <span><b>Normativo ≠ supervisor ≠ operador</b>. Questão mistura verbos: “define” / “executa” /
+            “fiscaliza”.</span>
+        </div>
       </div>
+    </section>
 
-      <div class="card compact cols-4">
-        <h3>CNPC — Conselho Nacional de Previdência Complementar</h3>
-        <ul>
-          <li>Órgão normativo da <b>previdência complementar</b>.</li>
-          <li>Diretrizes para o segmento supervisionado pela <b>PREVIC</b> (principalmente EFPC).</li>
-          <li>Define regras e políticas gerais do regime de previdência complementar.</li>
-        </ul>
-        <div class="tag ok">Norma (CNPC) → Supervisiona (PREVIC)</div>
+    <section class="card anchor" id="sfn-normativos">
+      <h2>1.1.1) Órgãos normativos — características, funções e objetivos</h2>
+      <div class="tag warn">Cai: “quem define diretrizes / quem normatiza”</div>
+
+      <div class="grid">
+        <div class="card compact cols-4">
+          <h3>CMN — Conselho Monetário Nacional</h3>
+          <ul>
+            <li>Órgão <b>normativo máximo</b> do SFN.</li>
+            <li>Define diretrizes da política <b>monetária</b>, <b>creditícia</b> e <b>cambial</b>.</li>
+            <li><b>Não</b> executa instrumentos (open market/compulsório/redesconto).</li>
+          </ul>
+          <div class="callout" style="margin-top:10px;"><b>Frase de prova:</b> “estabelece diretrizes gerais” → CMN ✅
+          </div>
+        </div>
+
+        <div class="card compact cols-4">
+          <h3>CNSP — Conselho Nacional de Seguros Privados</h3>
+          <ul>
+            <li>Órgão normativo do mercado de <b>seguros</b>.</li>
+            <li>Define diretrizes e normas para o setor supervisionado pela <b>SUSEP</b>.</li>
+            <li>Alinha regras para seguros/ressseguros/capitalização/previdência aberta (no plano normativo).</li>
+          </ul>
+          <div class="tag ok">Norma (CNSP) → Supervisiona (SUSEP)</div>
+        </div>
+
+        <div class="card compact cols-4">
+          <h3>CNPC — Conselho Nacional de Previdência Complementar</h3>
+          <ul>
+            <li>Órgão normativo da <b>previdência complementar</b>.</li>
+            <li>Diretrizes para o segmento supervisionado pela <b>PREVIC</b> (principalmente EFPC).</li>
+            <li>Define regras e políticas gerais do regime de previdência complementar.</li>
+          </ul>
+          <div class="tag ok">Norma (CNPC) → Supervisiona (PREVIC)</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="card anchor" id="sfn-supervisao">
-    <h2>1.1.2) Supervisão — características, funções e objetivos</h2>
-    <div class="tag warn">Cai: “quem regula/fiscaliza o quê”</div>
+    <section class="card anchor" id="sfn-supervisao">
+      <h2>1.1.2) Supervisão — características, funções e objetivos</h2>
+      <div class="tag warn">Cai: “quem regula/fiscaliza o quê”</div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Órgão</th>
-          <th>O que supervisiona</th>
-          <th>Palavras-chave de prova</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>BCB (BACEN)</b></td>
-          <td>Instituições financeiras, estabilidade financeira, política monetária/cambial</td>
-          <td>liquidez, compulsório, redesconto, open market, COPOM, estabilidade</td>
-        </tr>
-        <tr>
-          <td><b>CVM</b></td>
-          <td>Valores mobiliários, fundos, companhias abertas, ofertas públicas</td>
-          <td>ações, fundos, debêntures, ofertas, ilícitos, disclosure</td>
-        </tr>
-        <tr>
-          <td><b>SUSEP</b></td>
-          <td>Seguros, resseguros, capitalização e previdência complementar <b>aberta</b> (EAPC)</td>
-          <td>apólices, prêmio, indenização, capitalização, PGBL/VGBL (aberta)</td>
-        </tr>
-        <tr>
-          <td><b>PREVIC</b></td>
-          <td>Previdência complementar <b>fechada</b> (EFPC/fundos de pensão)</td>
-          <td>EFPC, fundos de pensão, governança, solvência</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Órgão</th>
+            <th>O que supervisiona</th>
+            <th>Palavras-chave de prova</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>BCB (BACEN)</b></td>
+            <td>Instituições financeiras, estabilidade financeira, política monetária/cambial</td>
+            <td>liquidez, compulsório, redesconto, open market, COPOM, estabilidade</td>
+          </tr>
+          <tr>
+            <td><b>CVM</b></td>
+            <td>Valores mobiliários, fundos, companhias abertas, ofertas públicas</td>
+            <td>ações, fundos, debêntures, ofertas, ilícitos, disclosure</td>
+          </tr>
+          <tr>
+            <td><b>SUSEP</b></td>
+            <td>Seguros, resseguros, capitalização e previdência complementar <b>aberta</b> (EAPC)</td>
+            <td>apólices, prêmio, indenização, capitalização, PGBL/VGBL (aberta)</td>
+          </tr>
+          <tr>
+            <td><b>PREVIC</b></td>
+            <td>Previdência complementar <b>fechada</b> (EFPC/fundos de pensão)</td>
+            <td>EFPC, fundos de pensão, governança, solvência</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <div class="callout" style="margin-top:12px;">
-      <b>Pegadinha:</b> “Previdência aberta (PGBL/VGBL) → SUSEP” e “Previdência fechada (EFPC) → PREVIC”.
-    </div>
-  </section>
-
-  <section class="card anchor" id="sfn-operadores">
-    <h2>1.1.3) Operadores e participantes do sistema — características, funções e objetivos</h2>
-
-    <div class="grid">
-      <div class="card compact cols-6">
-        <h3>1.1.3.1) Instituições (lista completa do programa)</h3>
-        <ul>
-          <li><b>1.1.3.1.1</b> Bancos e caixas econômicas</li>
-          <li><b>1.1.3.1.2</b> Cooperativas de crédito e banco cooperativo</li>
-          <li><b>1.1.3.1.3</b> Instituições de pagamento (IPs)</li>
-          <li><b>1.1.3.1.4</b> Administradoras de consórcios</li>
-          <li><b>1.1.3.1.5</b> Corretoras e distribuidoras</li>
-          <li><b>1.1.3.1.6</b> Fintechs</li>
-          <li><b>1.1.3.1.7</b> Sociedades de crédito, financiamento e investimento (SCFI)</li>
-          <li><b>1.1.3.1.8</b> Companhias hipotecárias</li>
-          <li><b>1.1.3.1.9</b> Agências de fomento</li>
-          <li><b>1.1.3.1.10</b> Sociedades de crédito à PME e EPP</li>
-          <li><b>1.1.3.1.11</b> Sociedade de Crédito Imobiliário (SCI)</li>
-          <li><b>1.1.3.1.12</b> B3 S/A — Brasil, Bolsa e Balcão</li>
-          <li><b>1.1.3.1.13</b> Seguradoras e resseguradoras</li>
-          <li><b>1.1.3.1.14</b> Entidades Abertas de Previdência Complementar (EAPC)</li>
-          <li><b>1.1.3.1.15</b> Sociedades de capitalização</li>
-          <li><b>1.1.3.1.16</b> Entidades Fechadas de Previdência Complementar (EFPC) — fundos de pensão</li>
-          <li><b>1.1.3.1.17</b> Corretoras de seguros</li>
-        </ul>
+      <div class="callout" style="margin-top:12px;">
+        <b>Pegadinha:</b> “Previdência aberta (PGBL/VGBL) → SUSEP” e “Previdência fechada (EFPC) → PREVIC”.
       </div>
+    </section>
 
-      <div class="card compact cols-6">
-        <h3>O que a prova costuma confundir (resumo objetivo)</h3>
-        <ul>
-          <li><b>Banco</b> capta e empresta; pode oferecer vários serviços (conforme autorização).</li>
-          <li><b>Cooperativa</b> é “dos cooperados” (usuário = dono); foco local/regional; pode ter banco cooperativo.</li>
-          <li><b>Instituição de pagamento (IP)</b> atua em arranjos de pagamento/contas de pagamento (não é banco típico).</li>
-          <li><b>Corretora/Distribuidora</b> intermedia e distribui produtos (principalmente valores mobiliários).</li>
-          <li><b>Consórcio</b> é compra programada via grupo; <b>não</b> é investimento (cuidado com enunciado malicioso).</li>
-          <li><b>Fintech</b> é modelo/tecnologia: pode ser IP, crédito, investimentos etc. (depende da autorização).</li>
-          <li><b>SCI/hipotecária/crédito</b> = instituições focadas em modalidades específicas de crédito/financiamento.</li>
-          <li><b>Seguradora</b> vende proteção (risco); <b>capitalização</b> = produto de acumulação + sorteios (não confundir).</li>
-        </ul>
-        <div class="tag warn">Se o enunciado mistura “captação de depósito” com “conta de pagamento”, desconfia.</div>
+    <section class="card anchor" id="sfn-operadores">
+      <h2>1.1.3) Operadores e participantes do sistema — características, funções e objetivos</h2>
+
+      <div class="grid">
+        <div class="card compact cols-6">
+          <h3>1.1.3.1) Instituições (lista completa do programa)</h3>
+          <ul>
+            <li><b>1.1.3.1.1</b> Bancos e caixas econômicas</li>
+            <li><b>1.1.3.1.2</b> Cooperativas de crédito e banco cooperativo</li>
+            <li><b>1.1.3.1.3</b> Instituições de pagamento (IPs)</li>
+            <li><b>1.1.3.1.4</b> Administradoras de consórcios</li>
+            <li><b>1.1.3.1.5</b> Corretoras e distribuidoras</li>
+            <li><b>1.1.3.1.6</b> Fintechs</li>
+            <li><b>1.1.3.1.7</b> Sociedades de crédito, financiamento e investimento (SCFI)</li>
+            <li><b>1.1.3.1.8</b> Companhias hipotecárias</li>
+            <li><b>1.1.3.1.9</b> Agências de fomento</li>
+            <li><b>1.1.3.1.10</b> Sociedades de crédito à PME e EPP</li>
+            <li><b>1.1.3.1.11</b> Sociedade de Crédito Imobiliário (SCI)</li>
+            <li><b>1.1.3.1.12</b> B3 S/A — Brasil, Bolsa e Balcão</li>
+            <li><b>1.1.3.1.13</b> Seguradoras e resseguradoras</li>
+            <li><b>1.1.3.1.14</b> Entidades Abertas de Previdência Complementar (EAPC)</li>
+            <li><b>1.1.3.1.15</b> Sociedades de capitalização</li>
+            <li><b>1.1.3.1.16</b> Entidades Fechadas de Previdência Complementar (EFPC) — fundos de pensão</li>
+            <li><b>1.1.3.1.17</b> Corretoras de seguros</li>
+          </ul>
+        </div>
+
+        <div class="card compact cols-6">
+          <h3>O que a prova costuma confundir (resumo objetivo)</h3>
+          <ul>
+            <li><b>Banco</b> capta e empresta; pode oferecer vários serviços (conforme autorização).</li>
+            <li><b>Cooperativa</b> é “dos cooperados” (usuário = dono); foco local/regional; pode ter banco cooperativo.
+            </li>
+            <li><b>Instituição de pagamento (IP)</b> atua em arranjos de pagamento/contas de pagamento (não é banco
+              típico).</li>
+            <li><b>Corretora/Distribuidora</b> intermedia e distribui produtos (principalmente valores mobiliários).
+            </li>
+            <li><b>Consórcio</b> é compra programada via grupo; <b>não</b> é investimento (cuidado com enunciado
+              malicioso).</li>
+            <li><b>Fintech</b> é modelo/tecnologia: pode ser IP, crédito, investimentos etc. (depende da autorização).
+            </li>
+            <li><b>SCI/hipotecária/crédito</b> = instituições focadas em modalidades específicas de
+              crédito/financiamento.</li>
+            <li><b>Seguradora</b> vende proteção (risco); <b>capitalização</b> = produto de acumulação + sorteios (não
+              confundir).</li>
+          </ul>
+          <div class="tag warn">Se o enunciado mistura “captação de depósito” com “conta de pagamento”, desconfia.</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="card anchor" id="sfn-autorreg">
-    <h2>1.1.4) Autorreguladores e demais participantes do mercado</h2>
+    <section class="card anchor" id="sfn-autorreg">
+      <h2>1.1.4) Autorreguladores e demais participantes do mercado</h2>
 
-    <div class="grid">
-      <div class="card compact cols-4">
-        <h3>1.1.4.1) ANBIMA</h3>
-        <ul>
-          <li>Autorregulação + códigos de melhores práticas.</li>
-          <li>Certificações (CPA etc.).</li>
-          <li>Regras de conduta, publicidade, suitability, distribuição, transparência de remuneração etc.</li>
-        </ul>
+      <div class="grid">
+        <div class="card compact cols-4">
+          <h3>1.1.4.1) ANBIMA</h3>
+          <ul>
+            <li>Autorregulação + códigos de melhores práticas.</li>
+            <li>Certificações (CPA etc.).</li>
+            <li>Regras de conduta, publicidade, suitability, distribuição, transparência de remuneração etc.</li>
+          </ul>
+        </div>
+
+        <div class="card compact cols-4">
+          <h3>1.1.4.2) APIMEC, Planejar e ANCORD</h3>
+          <ul>
+            <li><b>APIMEC</b>: profissionais de investimento/mercado (ênfase em analistas e educação).</li>
+            <li><b>Planejar</b>: planejamento financeiro (visão de finanças pessoais e planejamento).</li>
+            <li><b>ANCORD</b>: mercado de capitais (intermediação, agentes, qualificação).</li>
+          </ul>
+        </div>
+
+        <div class="card compact cols-4">
+          <h3>1.1.4.3) FGC e FGCCoop</h3>
+          <ul>
+            <li><b>FGC</b>: mecanismo de proteção (cobertura) para determinados produtos/instituições.</li>
+            <li><b>FGCCoop</b>: análogo para o cooperativismo de crédito (quando aplicável).</li>
+            <li><b>Pegadinha:</b> FGC não elimina risco (tem limites/regras/produtos cobertos).</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div class="card compact cols-4">
-        <h3>1.1.4.2) APIMEC, Planejar e ANCORD</h3>
-        <ul>
-          <li><b>APIMEC</b>: profissionais de investimento/mercado (ênfase em analistas e educação).</li>
-          <li><b>Planejar</b>: planejamento financeiro (visão de finanças pessoais e planejamento).</li>
-          <li><b>ANCORD</b>: mercado de capitais (intermediação, agentes, qualificação).</li>
-        </ul>
+    <section class="card anchor" id="sfn-sbp">
+      <h2>1.1.5) Sistema Brasileiro de Pagamentos (SBP)</h2>
+
+      <div class="grid">
+        <div class="card compact cols-6">
+          <h3>Conceito</h3>
+          <ul>
+            <li>Conjunto de regras, instituições e sistemas que viabilizam <b>transferências</b> e <b>liquidação</b> de
+              obrigações.</li>
+            <li>Objetivo central: <b>segurança</b>, <b>eficiência</b> e redução de <b>risco sistêmico</b>.</li>
+          </ul>
+        </div>
+        <div class="card compact cols-6">
+          <h3>Conexão com prova</h3>
+          <ul>
+            <li>SBP é o “guarda-chuva” (pagamentos/liquidação no sistema).</li>
+            <li>SPI aparece como parte de pagamentos instantâneos (mais abaixo em infraestrutura).</li>
+            <li>Selic aparece como sistema de liquidação/custódia de títulos públicos (mais abaixo).</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div class="card compact cols-4">
-        <h3>1.1.4.3) FGC e FGCCoop</h3>
-        <ul>
-          <li><b>FGC</b>: mecanismo de proteção (cobertura) para determinados produtos/instituições.</li>
-          <li><b>FGCCoop</b>: análogo para o cooperativismo de crédito (quando aplicável).</li>
-          <li><b>Pegadinha:</b> FGC não elimina risco (tem limites/regras/produtos cobertos).</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="card anchor" id="sfn-sbp">
-    <h2>1.1.5) Sistema Brasileiro de Pagamentos (SBP)</h2>
-
-    <div class="grid">
-      <div class="card compact cols-6">
-        <h3>Conceito</h3>
-        <ul>
-          <li>Conjunto de regras, instituições e sistemas que viabilizam <b>transferências</b> e <b>liquidação</b> de obrigações.</li>
-          <li>Objetivo central: <b>segurança</b>, <b>eficiência</b> e redução de <b>risco sistêmico</b>.</li>
-        </ul>
-      </div>
-      <div class="card compact cols-6">
-        <h3>Conexão com prova</h3>
-        <ul>
-          <li>SBP é o “guarda-chuva” (pagamentos/liquidação no sistema).</li>
-          <li>SPI aparece como parte de pagamentos instantâneos (mais abaixo em infraestrutura).</li>
-          <li>Selic aparece como sistema de liquidação/custódia de títulos públicos (mais abaixo).</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
+    <!-- =========================
        1.2 POLÍTICA ECONÔMICA
   ========================== -->
-  <section class="card anchor" id="pol-econ">
-    <h2>1.2) Política econômica (o que cai: conceitos + impactos práticos)</h2>
+    <section class="card anchor" id="pol-econ">
+      <h2>1.2) Política econômica (o que cai: conceitos + impactos práticos)</h2>
 
-    <section class="anchor" id="fluxo-renda">
-      <h3>1.2.1) Fluxo circular da renda</h3>
-      <div class="callout">
-        <b>Ideia:</b> famílias, empresas, governo e “mercado” trocam <b>renda</b>, <b>bens/serviços</b> e <b>impostos</b>.
-        Mudança de decisão em qualquer agente afeta atividade econômica, emprego, preços e juros.
-      </div>
+      <section class="anchor" id="fluxo-renda">
+        <h3>1.2.1) Fluxo circular da renda</h3>
+        <div class="callout">
+          <b>Ideia:</b> famílias, empresas, governo e “mercado” trocam <b>renda</b>, <b>bens/serviços</b> e
+          <b>impostos</b>.
+          Mudança de decisão em qualquer agente afeta atividade econômica, emprego, preços e juros.
+        </div>
 
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.1.1) Componentes e impactos</h4>
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.1.1) Componentes e impactos</h4>
+            <ul>
+              <li><b>Famílias</b>: consumo e poupança → afetam demanda e investimento.</li>
+              <li><b>Empresas</b>: investimento e produção → afetam emprego e renda.</li>
+              <li><b>Governo</b>: gasto e impostos → afetam demanda agregada, dívida e juros.</li>
+              <li><b>Mercado</b>: preços, taxas e crédito → afetam decisões de consumo/investimento.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>Pegadinha</h4>
+            <ul>
+              <li>“Aumento de juros” tende a reduzir crédito/consumo → desacelera atividade.</li>
+              <li>“Aumento de gasto público” pode estimular demanda no curto prazo, mas pode pressionar dívida/juros.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="subdivisoes-mercado">
+        <h3>1.2.2) Mercado financeiro e suas subdivisões</h3>
+
+        <div class="grid">
+          <div class="card compact cols-3">
+            <h4>1.2.2.1) Monetário</h4>
+            <p>Curto prazo; liquidez; taxas curtas; operação do BC (liquidez).</p>
+          </div>
+          <div class="card compact cols-3">
+            <h4>1.2.2.2) Cambial</h4>
+            <p>Moedas; comércio exterior; PTAX; cupom cambial; reservas.</p>
+          </div>
+          <div class="card compact cols-3">
+            <h4>1.2.2.3) Crédito</h4>
+            <p>Empréstimos/financiamentos; risco de crédito; spreads; garantias.</p>
+          </div>
+          <div class="card compact cols-3">
+            <h4>1.2.2.4) Capitais</h4>
+            <p>Longo prazo; ações/debêntures/fundos; ofertas; mercado primário e secundário.</p>
+          </div>
+        </div>
+
+        <div class="tag warn">Prova gosta: “qual mercado financia longo prazo?” → Capitais ✅</div>
+      </section>
+
+      <section class="anchor" id="politica-fiscal">
+        <h3>1.2.3) Política fiscal</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.3.1) Conceito e objetivos</h4>
+            <ul>
+              <li>Uso de <b>gastos</b> e <b>tributação</b> para influenciar atividade, emprego e distribuição.</li>
+              <li>Afeta <b>dívida pública</b> e percepção de risco → afeta juros e investimento privado.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.3.2) Modelos e funções</h4>
+            <ul>
+              <li>Função <b>alocativa</b> (bens públicos), <b>distributiva</b> (renda) e <b>estabilizadora</b> (ciclo
+                econômico).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.3.3) Relações: fiscal × dívida × inflação × juros × investimento</h4>
+            <ul>
+              <li>Déficit persistente tende a elevar dívida → risco → juros longos.</li>
+              <li>Juros longos maiores podem reduzir investimento privado (crowding out).</li>
+              <li>Em cenários extremos, dominância fiscal pode pressionar inflação/expectativas.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.3.4) Financiamento do governo (LRF e equilíbrio fiscal)</h4>
+            <ul>
+              <li><b>LRF</b>: disciplina fiscal, transparência, metas, limites e responsabilidade.</li>
+              <li>Equilíbrio fiscal melhora credibilidade → reduz prêmio de risco.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="politica-monetaria">
+        <h3>1.2.4) Política monetária</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.4.1) Expansionista × contracionista</h4>
+            <ul>
+              <li><b>Expansionista</b>: aumenta liquidez / reduz juros → estimula crédito e atividade.</li>
+              <li><b>Contracionista</b>: reduz liquidez / eleva juros → combate inflação, desacelera atividade.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.4.2) Instrumentos</h4>
+            <ul>
+              <li><b>Open market</b> (compra/venda de títulos)</li>
+              <li><b>Redesconto</b> (liquidez a bancos)</li>
+              <li><b>Depósito compulsório</b> (recolhimento obrigatório)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.4.3) Canais de transmissão (o “como chega”)</h4>
+            <ul>
+              <li><b>Canal do juros</b>: muda custo do crédito → consumo/investimento.</li>
+              <li><b>Canal do crédito</b>: oferta de crédito e spreads.</li>
+              <li><b>Canal das expectativas</b>: comunicação altera decisões hoje.</li>
+              <li><b>Canal do câmbio</b>: juros afetam fluxo e câmbio → inflação.</li>
+              <li><b>Canal dos preços de ativos</b>: bolsa, juros longos, imóveis etc.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.4.4) Impactos típicos</h4>
+            <ul>
+              <li>Juros ↑ → preço de títulos ↑ ou ↓? (depende: taxa ↑ → preço do título ↓).</li>
+              <li>Juros ↑ → bolsa tende a sofrer (desconto maior) e crédito encarece.</li>
+              <li>Liquidez ↓ → inflação tende a desacelerar (com defasagem).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.4.5) COPOM</h4>
+            <ul>
+              <li>Define a <b>meta da Selic</b> (diretriz operacional).</li>
+              <li>Decisão afeta taxas curtas, expectativas, atividade, inflação e preços de ativos.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.4.6) Metas de inflação e expectativas</h4>
+            <ul>
+              <li>Regime de metas: BC busca inflação em torno da meta (horizonte relevante).</li>
+              <li>Expectativas importam: ancoragem reduz custo de desinflação.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.2.4.7) Meta Selic × Selic × CDI (definições e relação)</h4>
           <ul>
-            <li><b>Famílias</b>: consumo e poupança → afetam demanda e investimento.</li>
-            <li><b>Empresas</b>: investimento e produção → afetam emprego e renda.</li>
-            <li><b>Governo</b>: gasto e impostos → afetam demanda agregada, dívida e juros.</li>
-            <li><b>Mercado</b>: preços, taxas e crédito → afetam decisões de consumo/investimento.</li>
+            <li><b>Meta Selic</b>: definida pelo COPOM.</li>
+            <li><b>Taxa Selic</b>: taxa efetiva (overnight) próxima da meta, via operações e liquidez.</li>
+            <li><b>CDI</b>: taxa do mercado interbancário (muito próxima da Selic em condições normais).</li>
+          </ul>
+          <div class="tag warn">Se a questão perguntar “qual fica mais próxima da Selic?” → CDI (normalmente) ✅</div>
+        </div>
+      </section>
+
+      <section class="anchor" id="politica-cambial">
+        <h3>1.2.5) Política cambial</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.5.1) Definição e objetivos</h4>
+            <ul>
+              <li>Conjunto de ações para influenciar o <b>mercado de câmbio</b> (estabilidade, funcionamento, reservas).
+              </li>
+              <li>Afeta inflação, competitividade e fluxo de capitais.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.5.2) Regimes, cupom cambial e reservas</h4>
+            <ul>
+              <li><b>Regimes</b>: flutuante, bandas, fixo (conceito geral).</li>
+              <li><b>Cupom cambial</b>: remuneração “em reais” associada a proteção/posição em moeda (conceito de
+                mercado).</li>
+              <li><b>Reservas</b>: amortecem choques e elevam confiança.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.5.3) Cupom cambial × investimentos</h4>
+            <ul>
+              <li>Impacta custo/benefício de hedge e decisões de alocação em ativos com exposição cambial.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.2.5.4) Swap cambial</h4>
+            <ul>
+              <li>Instrumento derivativo usado para <b>hedge</b> e gestão de liquidez em dólar (conceito).</li>
+              <li>Pegadinha: swap não é “venda de reservas físicas” necessariamente.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.2.5.5) Câmbio: nominal × real, PTAX, turismo × comercial</h4>
+          <ul>
+            <li><b>Nominal</b>: preço da moeda (R$/US$).</li>
+            <li><b>Real</b>: ajusta por inflação relativa (competitividade).</li>
+            <li><b>PTAX</b>: taxa de referência calculada no mercado (conceito prático).</li>
+            <li><b>Turismo</b> tende a ter spread maior do que <b>comercial</b>.</li>
           </ul>
         </div>
-        <div class="card compact cols-6">
-          <h4>Pegadinha</h4>
-          <ul>
-            <li>“Aumento de juros” tende a reduzir crédito/consumo → desacelera atividade.</li>
-            <li>“Aumento de gasto público” pode estimular demanda no curto prazo, mas pode pressionar dívida/juros.</li>
-          </ul>
+      </section>
+
+      <section class="anchor" id="indicadores">
+        <h3>1.2.6) Principais indicadores econômicos e de mercado</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.6.1) PIB (componentes)</h4>
+            <ul>
+              <li>Atividade econômica; componentes típicos: consumo, investimento, gasto do governo, setor externo.</li>
+              <li>PIB ↑ tende a elevar demanda por crédito e pode pressionar inflação (dependendo do ciclo).</li>
+            </ul>
+          </div>
+
+          <div class="card compact cols-6">
+            <h4>1.2.6.2) Inflação: IPCA, IGP-M, IPA e IPC-Fipe (definições/aplicações)</h4>
+            <ul>
+              <li><b>IPCA</b>: índice amplo ao consumidor (referência de metas).</li>
+              <li><b>IGP-M</b>: composição com atacado/construção/consumo (muito usado em contratos).</li>
+              <li><b>IPA</b>: preços no atacado (pressões de custos).</li>
+              <li><b>IPC-Fipe</b>: inflação ao consumidor (SP, referência acadêmica/mercado).</li>
+            </ul>
+          </div>
         </div>
-      </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.2.6.3) Desemprego (impacto)</h4>
+            <ul>
+              <li>Desemprego ↑ tende a reduzir consumo e pressão inflacionária (via demanda), mas pode ter efeitos de
+                renda e crédito.</li>
+            </ul>
+          </div>
+
+          <div class="card compact cols-6">
+            <h4>1.2.6.4) Selic, DI e TR</h4>
+            <ul>
+              <li><b>Selic</b>: referência básica de juros no Brasil.</li>
+              <li><b>DI/CDI</b>: taxa interbancária (muito próxima da Selic em geral).</li>
+              <li><b>TR</b>: taxa referencial (usada em alguns produtos/contratos; conceito importante).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="riscos-basicos">
+        <h3>1.2.7) Risco de liquidez, crédito e mercado</h3>
+
+        <div class="grid">
+          <div class="card compact cols-4">
+            <h4>Liquidez</h4>
+            <ul>
+              <li>Dificuldade de converter em dinheiro sem perda relevante.</li>
+              <li>Risco maior em ativos com mercado secundário fraco.</li>
+            </ul>
+          </div>
+
+          <div class="card compact cols-4">
+            <h4>Crédito</h4>
+            <ul>
+              <li>Risco de não pagamento do emissor/devedor.</li>
+              <li>Mitigado por garantias, diversificação, rating, covenants etc.</li>
+            </ul>
+          </div>
+
+          <div class="card compact cols-4">
+            <h4>Mercado</h4>
+            <ul>
+              <li>Variação de preço por juros, câmbio, bolsa, commodities, volatilidade.</li>
+              <li>Ex.: taxa de juros ↑ → preço de título prefixado ↓.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
     </section>
 
-    <section class="anchor" id="subdivisoes-mercado">
-      <h3>1.2.2) Mercado financeiro e suas subdivisões</h3>
-
-      <div class="grid">
-        <div class="card compact cols-3">
-          <h4>1.2.2.1) Monetário</h4>
-          <p>Curto prazo; liquidez; taxas curtas; operação do BC (liquidez).</p>
-        </div>
-        <div class="card compact cols-3">
-          <h4>1.2.2.2) Cambial</h4>
-          <p>Moedas; comércio exterior; PTAX; cupom cambial; reservas.</p>
-        </div>
-        <div class="card compact cols-3">
-          <h4>1.2.2.3) Crédito</h4>
-          <p>Empréstimos/financiamentos; risco de crédito; spreads; garantias.</p>
-        </div>
-        <div class="card compact cols-3">
-          <h4>1.2.2.4) Capitais</h4>
-          <p>Longo prazo; ações/debêntures/fundos; ofertas; mercado primário e secundário.</p>
-        </div>
-      </div>
-
-      <div class="tag warn">Prova gosta: “qual mercado financia longo prazo?” → Capitais ✅</div>
-    </section>
-
-    <section class="anchor" id="politica-fiscal">
-      <h3>1.2.3) Política fiscal</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.3.1) Conceito e objetivos</h4>
-          <ul>
-            <li>Uso de <b>gastos</b> e <b>tributação</b> para influenciar atividade, emprego e distribuição.</li>
-            <li>Afeta <b>dívida pública</b> e percepção de risco → afeta juros e investimento privado.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.3.2) Modelos e funções</h4>
-          <ul>
-            <li>Função <b>alocativa</b> (bens públicos), <b>distributiva</b> (renda) e <b>estabilizadora</b> (ciclo econômico).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.3.3) Relações: fiscal × dívida × inflação × juros × investimento</h4>
-          <ul>
-            <li>Déficit persistente tende a elevar dívida → risco → juros longos.</li>
-            <li>Juros longos maiores podem reduzir investimento privado (crowding out).</li>
-            <li>Em cenários extremos, dominância fiscal pode pressionar inflação/expectativas.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.3.4) Financiamento do governo (LRF e equilíbrio fiscal)</h4>
-          <ul>
-            <li><b>LRF</b>: disciplina fiscal, transparência, metas, limites e responsabilidade.</li>
-            <li>Equilíbrio fiscal melhora credibilidade → reduz prêmio de risco.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="politica-monetaria">
-      <h3>1.2.4) Política monetária</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.4.1) Expansionista × contracionista</h4>
-          <ul>
-            <li><b>Expansionista</b>: aumenta liquidez / reduz juros → estimula crédito e atividade.</li>
-            <li><b>Contracionista</b>: reduz liquidez / eleva juros → combate inflação, desacelera atividade.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.4.2) Instrumentos</h4>
-          <ul>
-            <li><b>Open market</b> (compra/venda de títulos)</li>
-            <li><b>Redesconto</b> (liquidez a bancos)</li>
-            <li><b>Depósito compulsório</b> (recolhimento obrigatório)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.4.3) Canais de transmissão (o “como chega”)</h4>
-          <ul>
-            <li><b>Canal do juros</b>: muda custo do crédito → consumo/investimento.</li>
-            <li><b>Canal do crédito</b>: oferta de crédito e spreads.</li>
-            <li><b>Canal das expectativas</b>: comunicação altera decisões hoje.</li>
-            <li><b>Canal do câmbio</b>: juros afetam fluxo e câmbio → inflação.</li>
-            <li><b>Canal dos preços de ativos</b>: bolsa, juros longos, imóveis etc.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.4.4) Impactos típicos</h4>
-          <ul>
-            <li>Juros ↑ → preço de títulos ↑ ou ↓? (depende: taxa ↑ → preço do título ↓).</li>
-            <li>Juros ↑ → bolsa tende a sofrer (desconto maior) e crédito encarece.</li>
-            <li>Liquidez ↓ → inflação tende a desacelerar (com defasagem).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.4.5) COPOM</h4>
-          <ul>
-            <li>Define a <b>meta da Selic</b> (diretriz operacional).</li>
-            <li>Decisão afeta taxas curtas, expectativas, atividade, inflação e preços de ativos.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.4.6) Metas de inflação e expectativas</h4>
-          <ul>
-            <li>Regime de metas: BC busca inflação em torno da meta (horizonte relevante).</li>
-            <li>Expectativas importam: ancoragem reduz custo de desinflação.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.2.4.7) Meta Selic × Selic × CDI (definições e relação)</h4>
-        <ul>
-          <li><b>Meta Selic</b>: definida pelo COPOM.</li>
-          <li><b>Taxa Selic</b>: taxa efetiva (overnight) próxima da meta, via operações e liquidez.</li>
-          <li><b>CDI</b>: taxa do mercado interbancário (muito próxima da Selic em condições normais).</li>
-        </ul>
-        <div class="tag warn">Se a questão perguntar “qual fica mais próxima da Selic?” → CDI (normalmente) ✅</div>
-      </div>
-    </section>
-
-    <section class="anchor" id="politica-cambial">
-      <h3>1.2.5) Política cambial</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.5.1) Definição e objetivos</h4>
-          <ul>
-            <li>Conjunto de ações para influenciar o <b>mercado de câmbio</b> (estabilidade, funcionamento, reservas).</li>
-            <li>Afeta inflação, competitividade e fluxo de capitais.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.5.2) Regimes, cupom cambial e reservas</h4>
-          <ul>
-            <li><b>Regimes</b>: flutuante, bandas, fixo (conceito geral).</li>
-            <li><b>Cupom cambial</b>: remuneração “em reais” associada a proteção/posição em moeda (conceito de mercado).</li>
-            <li><b>Reservas</b>: amortecem choques e elevam confiança.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.5.3) Cupom cambial × investimentos</h4>
-          <ul>
-            <li>Impacta custo/benefício de hedge e decisões de alocação em ativos com exposição cambial.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.2.5.4) Swap cambial</h4>
-          <ul>
-            <li>Instrumento derivativo usado para <b>hedge</b> e gestão de liquidez em dólar (conceito).</li>
-            <li>Pegadinha: swap não é “venda de reservas físicas” necessariamente.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.2.5.5) Câmbio: nominal × real, PTAX, turismo × comercial</h4>
-        <ul>
-          <li><b>Nominal</b>: preço da moeda (R$/US$).</li>
-          <li><b>Real</b>: ajusta por inflação relativa (competitividade).</li>
-          <li><b>PTAX</b>: taxa de referência calculada no mercado (conceito prático).</li>
-          <li><b>Turismo</b> tende a ter spread maior do que <b>comercial</b>.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="anchor" id="indicadores">
-      <h3>1.2.6) Principais indicadores econômicos e de mercado</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.6.1) PIB (componentes)</h4>
-          <ul>
-            <li>Atividade econômica; componentes típicos: consumo, investimento, gasto do governo, setor externo.</li>
-            <li>PIB ↑ tende a elevar demanda por crédito e pode pressionar inflação (dependendo do ciclo).</li>
-          </ul>
-        </div>
-
-        <div class="card compact cols-6">
-          <h4>1.2.6.2) Inflação: IPCA, IGP-M, IPA e IPC-Fipe (definições/aplicações)</h4>
-          <ul>
-            <li><b>IPCA</b>: índice amplo ao consumidor (referência de metas).</li>
-            <li><b>IGP-M</b>: composição com atacado/construção/consumo (muito usado em contratos).</li>
-            <li><b>IPA</b>: preços no atacado (pressões de custos).</li>
-            <li><b>IPC-Fipe</b>: inflação ao consumidor (SP, referência acadêmica/mercado).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.2.6.3) Desemprego (impacto)</h4>
-          <ul>
-            <li>Desemprego ↑ tende a reduzir consumo e pressão inflacionária (via demanda), mas pode ter efeitos de renda e crédito.</li>
-          </ul>
-        </div>
-
-        <div class="card compact cols-6">
-          <h4>1.2.6.4) Selic, DI e TR</h4>
-          <ul>
-            <li><b>Selic</b>: referência básica de juros no Brasil.</li>
-            <li><b>DI/CDI</b>: taxa interbancária (muito próxima da Selic em geral).</li>
-            <li><b>TR</b>: taxa referencial (usada em alguns produtos/contratos; conceito importante).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="riscos-basicos">
-      <h3>1.2.7) Risco de liquidez, crédito e mercado</h3>
-
-      <div class="grid">
-        <div class="card compact cols-4">
-          <h4>Liquidez</h4>
-          <ul>
-            <li>Dificuldade de converter em dinheiro sem perda relevante.</li>
-            <li>Risco maior em ativos com mercado secundário fraco.</li>
-          </ul>
-        </div>
-
-        <div class="card compact cols-4">
-          <h4>Crédito</h4>
-          <ul>
-            <li>Risco de não pagamento do emissor/devedor.</li>
-            <li>Mitigado por garantias, diversificação, rating, covenants etc.</li>
-          </ul>
-        </div>
-
-        <div class="card compact cols-4">
-          <h4>Mercado</h4>
-          <ul>
-            <li>Variação de preço por juros, câmbio, bolsa, commodities, volatilidade.</li>
-            <li>Ex.: taxa de juros ↑ → preço de título prefixado ↓.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </section>
-
-  <!-- =========================
+    <!-- =========================
        1.3 OPERAÇÕES DO MERCADO FINANCEIRO
   ========================== -->
-  <section class="card anchor" id="operacoes">
-    <h2>1.3) Operações do mercado financeiro (matemática + lógica do dinheiro no tempo)</h2>
+    <section class="card anchor" id="operacoes">
+      <h2>1.3) Operações do mercado financeiro (matemática + lógica do dinheiro no tempo)</h2>
 
-    <section class="anchor" id="juros-real-nominal">
-      <h3>1.3.1) Juros nominal × juros real + indexador</h3>
-      <div class="callout">
-        <b>Ideia:</b> juros <b>nominal</b> é “sem tirar inflação”; juros <b>real</b> é “poder de compra”.
-        <b>Indexador</b> é o índice usado para corrigir (ex.: IPCA, CDI/DI, Selic, TR).
-      </div>
+      <section class="anchor" id="juros-real-nominal">
+        <h3>1.3.1) Juros nominal × juros real + indexador</h3>
+        <div class="callout">
+          <b>Ideia:</b> juros <b>nominal</b> é “sem tirar inflação”; juros <b>real</b> é “poder de compra”.
+          <b>Indexador</b> é o índice usado para corrigir (ex.: IPCA, CDI/DI, Selic, TR).
+        </div>
+      </section>
+
+      <section class="anchor" id="simples-composto">
+        <h3>1.3.2) Capitalização simples × composta (conceito, desconto, equivalência e proporcionalidade)</h3>
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>Simples</h4>
+            <ul>
+              <li>Juros crescem linearmente no tempo.</li>
+              <li>Mais comum em exemplos didáticos / descontos comerciais básicos.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>Composta</h4>
+            <ul>
+              <li>Juros sobre juros (crescimento exponencial).</li>
+              <li>Regra dominante em investimentos e financiamentos.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tag warn">Prova gosta: “juros sobre juros” → composta ✅</div>
+      </section>
+
+      <section class="anchor" id="tempo-alocacao">
+        <h3>1.3.3) Juros × tempo de alocação (e como isso muda o retorno)</h3>
+
+        <div class="card compact">
+          <h4>1.3.3.1) Amortização + juros em crédito privado</h4>
+          <ul>
+            <li>Títulos/ativos podem pagar <b>cupom</b> (juros periódicos) e/ou <b>amortizações</b> (devolução parcial
+              do principal).</li>
+            <li>Fluxo de caixa muda o “tempo médio” do investimento (impacta duration/risco de taxa).</li>
+          </ul>
+        </div>
+
+        <div class="card compact">
+          <h4>1.3.3.2) Regime de capitalização em empréstimos e mútuo</h4>
+          <ul>
+            <li>Regra: fluxo de pagamentos (parcelas) tem componentes de <b>juros</b> e <b>amortização</b>.</li>
+            <li>No início, em sistemas como Price, juros tendem a pesar mais; em SAC, amortização é constante.</li>
+          </ul>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.3.2.1) Fluxo de pagamentos: relações e conceitos</h4>
+            <ul>
+              <li>Parcela = juros do período + amortização do período.</li>
+              <li>Saldo devedor reduz conforme amortização ocorre.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.3.2.2) Fluxo de caixa: cupom, amortizações e valores</h4>
+            <ul>
+              <li>Fluxo define risco de reinvestimento e sensibilidade à taxa de juros.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.3.2.3) VP, VF e VPL</h4>
+            <ul>
+              <li><b>VP</b> traz fluxos futuros para hoje (desconto).</li>
+              <li><b>VF</b> leva valor de hoje para o futuro (capitalização).</li>
+              <li><b>VPL</b> = soma dos fluxos descontados − investimento inicial.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.3.3) Taxa de desconto</h4>
+            <ul>
+              <li>Taxa usada para descontar fluxos: pode ser taxa livre de risco + prêmio, custo de capital, etc.</li>
+              <li>Quanto maior a taxa, menor o VP dos fluxos.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.3.4) Taxa bruta × taxa líquida (impostos)</h4>
+            <ul>
+              <li><b>Bruta</b>: antes de impostos/taxas.</li>
+              <li><b>Líquida</b>: após impostos/taxas — é o que importa pro cliente.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.3.5) Amortização (conceitos vinculados)</h4>
+            <ul>
+              <li>Devolução do principal ao longo do tempo.</li>
+              <li>Afeta prazo médio e risco de taxa.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.1) Prazo médio × vencimento</h4>
+            <p>Prazo médio considera quando o dinheiro “volta” via fluxos; vencimento é a data final.</p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.2) TIR</h4>
+            <p>Taxa que zera o VPL (retorno implícito do fluxo).</p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.3) Custo de oportunidade</h4>
+            <p>O que o cliente deixa de ganhar ao escolher A em vez de B.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.4) Taxa livre de risco</h4>
+            <p>Referência de “risco mínimo” (conceito prático: títulos soberanos de alta qualidade, no contexto local).
+            </p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.5) CMPC (WACC)</h4>
+            <p>Custo médio ponderado de capital (dívida e capital próprio).</p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.3.3.5.6) Duration × prazo</h4>
+            <p>Duration mede sensibilidade a juros e “tempo médio” do fluxo, não só o vencimento.</p>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.3.3.5.6.1) Alavancagem financeira e custos de captação</h4>
+          <ul>
+            <li>Alavancagem: uso de dívida para ampliar retorno (e risco).</li>
+            <li>Custos: juros da dívida, spreads, covenants e risco de refinanciamento.</li>
+          </ul>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.3.6) Retorno histórico × retorno esperado</h4>
+            <ul>
+              <li><b>Histórico</b>: observado no passado (não garante futuro).</li>
+              <li><b>Esperado</b>: estimado (base em cenários, probabilidades, premissas).</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.3.6.1 / 1.3.3.6.2) De ativo × de carteira</h4>
+            <ul>
+              <li>Carteira depende de correlação/diversificação (não é só média simples).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="taxas-juros">
+        <h3>1.3.4) Taxas de juros</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.4.1) Nominal, efetiva e real (Fisher)</h4>
+            <ul>
+              <li>Relação aproximada: real ≈ (1+nominal)/(1+inflação) − 1.</li>
+              <li>Prova cobra lógica: inflação ↑ reduz juro real (se nominal fixo).</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.4.2) Prefixada × pós-fixada</h4>
+            <ul>
+              <li><b>Prefixada</b>: taxa conhecida no início.</li>
+              <li><b>Pós</b>: indexador (CDI, Selic, IPCA+ etc.).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.4.3) Juros simples e compostos</h4>
+            <ul>
+              <li>Simples: linear.</li>
+              <li>Compostos: exponencial (investimentos reais).</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.5) Desconto comercial</h4>
+            <ul>
+              <li>Desconto aplicado “por fora” em operações comerciais/duplicatas (conceito).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.3.6) Payback</h4>
+            <ul>
+              <li>Tempo para recuperar investimento (métrica simples; ignora valor do dinheiro no tempo se não
+                ajustado).</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.3.7) Sistemas de amortização (SAC e Price)</h4>
+            <ul>
+              <li><b>SAC</b>: amortização constante; parcelas decrescem.</li>
+              <li><b>Price</b>: parcela constante; juros maiores no início; amortização cresce ao longo do tempo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.3.8) Desconto bancário (antecipação de recebíveis) + 1.3.8.1 Desconto bancário simples</h4>
+          <ul>
+            <li>Antecipação: banco “compra” recebível com desconto (custo para quem antecipa).</li>
+            <li>Prova cobra a ideia: há taxa/juros e o valor recebido é menor que o valor de face.</li>
+          </ul>
+        </div>
+      </section>
     </section>
 
-    <section class="anchor" id="simples-composto">
-      <h3>1.3.2) Capitalização simples × composta (conceito, desconto, equivalência e proporcionalidade)</h3>
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>Simples</h4>
-          <ul>
-            <li>Juros crescem linearmente no tempo.</li>
-            <li>Mais comum em exemplos didáticos / descontos comerciais básicos.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>Composta</h4>
-          <ul>
-            <li>Juros sobre juros (crescimento exponencial).</li>
-            <li>Regra dominante em investimentos e financiamentos.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tag warn">Prova gosta: “juros sobre juros” → composta ✅</div>
-    </section>
-
-    <section class="anchor" id="tempo-alocacao">
-      <h3>1.3.3) Juros × tempo de alocação (e como isso muda o retorno)</h3>
-
-      <div class="card compact">
-        <h4>1.3.3.1) Amortização + juros em crédito privado</h4>
-        <ul>
-          <li>Títulos/ativos podem pagar <b>cupom</b> (juros periódicos) e/ou <b>amortizações</b> (devolução parcial do principal).</li>
-          <li>Fluxo de caixa muda o “tempo médio” do investimento (impacta duration/risco de taxa).</li>
-        </ul>
-      </div>
-
-      <div class="card compact">
-        <h4>1.3.3.2) Regime de capitalização em empréstimos e mútuo</h4>
-        <ul>
-          <li>Regra: fluxo de pagamentos (parcelas) tem componentes de <b>juros</b> e <b>amortização</b>.</li>
-          <li>No início, em sistemas como Price, juros tendem a pesar mais; em SAC, amortização é constante.</li>
-        </ul>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.3.2.1) Fluxo de pagamentos: relações e conceitos</h4>
-          <ul>
-            <li>Parcela = juros do período + amortização do período.</li>
-            <li>Saldo devedor reduz conforme amortização ocorre.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.3.2.2) Fluxo de caixa: cupom, amortizações e valores</h4>
-          <ul>
-            <li>Fluxo define risco de reinvestimento e sensibilidade à taxa de juros.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.3.2.3) VP, VF e VPL</h4>
-          <ul>
-            <li><b>VP</b> traz fluxos futuros para hoje (desconto).</li>
-            <li><b>VF</b> leva valor de hoje para o futuro (capitalização).</li>
-            <li><b>VPL</b> = soma dos fluxos descontados − investimento inicial.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.3.3) Taxa de desconto</h4>
-          <ul>
-            <li>Taxa usada para descontar fluxos: pode ser taxa livre de risco + prêmio, custo de capital, etc.</li>
-            <li>Quanto maior a taxa, menor o VP dos fluxos.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.3.4) Taxa bruta × taxa líquida (impostos)</h4>
-          <ul>
-            <li><b>Bruta</b>: antes de impostos/taxas.</li>
-            <li><b>Líquida</b>: após impostos/taxas — é o que importa pro cliente.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.3.5) Amortização (conceitos vinculados)</h4>
-          <ul>
-            <li>Devolução do principal ao longo do tempo.</li>
-            <li>Afeta prazo médio e risco de taxa.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.1) Prazo médio × vencimento</h4>
-          <p>Prazo médio considera quando o dinheiro “volta” via fluxos; vencimento é a data final.</p>
-        </div>
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.2) TIR</h4>
-          <p>Taxa que zera o VPL (retorno implícito do fluxo).</p>
-        </div>
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.3) Custo de oportunidade</h4>
-          <p>O que o cliente deixa de ganhar ao escolher A em vez de B.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.4) Taxa livre de risco</h4>
-          <p>Referência de “risco mínimo” (conceito prático: títulos soberanos de alta qualidade, no contexto local).</p>
-        </div>
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.5) CMPC (WACC)</h4>
-          <p>Custo médio ponderado de capital (dívida e capital próprio).</p>
-        </div>
-        <div class="card compact cols-4">
-          <h4>1.3.3.5.6) Duration × prazo</h4>
-          <p>Duration mede sensibilidade a juros e “tempo médio” do fluxo, não só o vencimento.</p>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.3.3.5.6.1) Alavancagem financeira e custos de captação</h4>
-        <ul>
-          <li>Alavancagem: uso de dívida para ampliar retorno (e risco).</li>
-          <li>Custos: juros da dívida, spreads, covenants e risco de refinanciamento.</li>
-        </ul>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.3.6) Retorno histórico × retorno esperado</h4>
-          <ul>
-            <li><b>Histórico</b>: observado no passado (não garante futuro).</li>
-            <li><b>Esperado</b>: estimado (base em cenários, probabilidades, premissas).</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.3.6.1 / 1.3.3.6.2) De ativo × de carteira</h4>
-          <ul>
-            <li>Carteira depende de correlação/diversificação (não é só média simples).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="taxas-juros">
-      <h3>1.3.4) Taxas de juros</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.4.1) Nominal, efetiva e real (Fisher)</h4>
-          <ul>
-            <li>Relação aproximada: real ≈ (1+nominal)/(1+inflação) − 1.</li>
-            <li>Prova cobra lógica: inflação ↑ reduz juro real (se nominal fixo).</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.4.2) Prefixada × pós-fixada</h4>
-          <ul>
-            <li><b>Prefixada</b>: taxa conhecida no início.</li>
-            <li><b>Pós</b>: indexador (CDI, Selic, IPCA+ etc.).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.4.3) Juros simples e compostos</h4>
-          <ul>
-            <li>Simples: linear.</li>
-            <li>Compostos: exponencial (investimentos reais).</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.5) Desconto comercial</h4>
-          <ul>
-            <li>Desconto aplicado “por fora” em operações comerciais/duplicatas (conceito).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.3.6) Payback</h4>
-          <ul>
-            <li>Tempo para recuperar investimento (métrica simples; ignora valor do dinheiro no tempo se não ajustado).</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.3.7) Sistemas de amortização (SAC e Price)</h4>
-          <ul>
-            <li><b>SAC</b>: amortização constante; parcelas decrescem.</li>
-            <li><b>Price</b>: parcela constante; juros maiores no início; amortização cresce ao longo do tempo.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.3.8) Desconto bancário (antecipação de recebíveis) + 1.3.8.1 Desconto bancário simples</h4>
-        <ul>
-          <li>Antecipação: banco “compra” recebível com desconto (custo para quem antecipa).</li>
-          <li>Prova cobra a ideia: há taxa/juros e o valor recebido é menor que o valor de face.</li>
-        </ul>
-      </div>
-    </section>
-  </section>
-
-  <!-- =========================
+    <!-- =========================
        1.4 REGULAÇÃO E INFRAESTRUTURA
   ========================== -->
-  <section class="card anchor" id="infra-mercado">
-    <h2>1.4) Regulação e infraestrutura de mercado (IMFs, SPB/SPI, Selic, Basileia, Anbima)</h2>
+    <section class="card anchor" id="infra-mercado">
+      <h2>1.4) Regulação e infraestrutura de mercado (IMFs, SPB/SPI, Selic, Basileia, Anbima)</h2>
 
-    <section class="anchor" id="imfs-gatekeepers">
-      <h3>1.4.1) Infraestruturas do Mercado Financeiro (IMFs) + gatekeepers</h3>
+      <section class="anchor" id="imfs-gatekeepers">
+        <h3>1.4.1) Infraestruturas do Mercado Financeiro (IMFs) + gatekeepers</h3>
 
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>O que são IMFs</h4>
-          <ul>
-            <li>Infraestruturas críticas para negociação, registro, custódia, compensação e liquidação.</li>
-            <li>Reduzem risco sistêmico e risco de contraparte.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>Gatekeepers (função)</h4>
-          <ul>
-            <li>Agentes/infraestruturas que “filtram e controlam” riscos e conformidade antes da liquidação final.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.4.1.1) Sistemas de pagamentos (conceitos, atribuições e exemplos)</h4>
-          <ul>
-            <li>Viabilizam transferências e pagamentos com regras e liquidação segura.</li>
-          </ul>
-          <div class="tag ok">SPB / SPI entram aqui</div>
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>O que são IMFs</h4>
+            <ul>
+              <li>Infraestruturas críticas para negociação, registro, custódia, compensação e liquidação.</li>
+              <li>Reduzem risco sistêmico e risco de contraparte.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>Gatekeepers (função)</h4>
+            <ul>
+              <li>Agentes/infraestruturas que “filtram e controlam” riscos e conformidade antes da liquidação final.
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card compact cols-6">
-          <h4>1.4.1.1.1) SPB • 1.4.1.1.2) SPI</h4>
-          <ul>
-            <li><b>SPB</b>: “guarda-chuva” do sistema de pagamentos.</li>
-            <li><b>SPI</b>: infraestrutura do <b>Pix</b> para liquidação instantânea (conceito).</li>
-          </ul>
-        </div>
-      </div>
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.4.1.1) Sistemas de pagamentos (conceitos, atribuições e exemplos)</h4>
+            <ul>
+              <li>Viabilizam transferências e pagamentos com regras e liquidação segura.</li>
+            </ul>
+            <div class="tag ok">SPB / SPI entram aqui</div>
+          </div>
 
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.4.1.2) Sistema de liquidação de títulos</h4>
-          <ul>
-            <li>Liquidação e custódia de títulos com segurança e finalização.</li>
-          </ul>
+          <div class="card compact cols-6">
+            <h4>1.4.1.1.1) SPB • 1.4.1.1.2) SPI</h4>
+            <ul>
+              <li><b>SPB</b>: “guarda-chuva” do sistema de pagamentos.</li>
+              <li><b>SPI</b>: infraestrutura do <b>Pix</b> para liquidação instantânea (conceito).</li>
+            </ul>
+          </div>
         </div>
-        <div class="card compact cols-6">
-          <h4>1.4.1.2.1) Selic (sistema)</h4>
-          <ul>
-            <li>Liquidação/custódia de <b>títulos públicos federais</b>.</li>
-            <li>Pegadinha: Selic é <b>taxa</b> e também <b>sistema</b> (o programa cobra Selic como sistema aqui).</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="grid">
-        <div class="card compact cols-4">
-          <h4>1.4.1.3) Contrapartes centrais (CCP)</h4>
-          <p>Interpondo-se entre comprador e vendedor para reduzir risco de contraparte.</p>
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.4.1.2) Sistema de liquidação de títulos</h4>
+            <ul>
+              <li>Liquidação e custódia de títulos com segurança e finalização.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.4.1.2.1) Selic (sistema)</h4>
+            <ul>
+              <li>Liquidação/custódia de <b>títulos públicos federais</b>.</li>
+              <li>Pegadinha: Selic é <b>taxa</b> e também <b>sistema</b> (o programa cobra Selic como sistema aqui).
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="card compact cols-4">
-          <h4>1.4.1.4) Depositários centrais</h4>
-          <p>Registro/custódia centralizada de ativos (conceito).</p>
+
+        <div class="grid">
+          <div class="card compact cols-4">
+            <h4>1.4.1.3) Contrapartes centrais (CCP)</h4>
+            <p>Interpondo-se entre comprador e vendedor para reduzir risco de contraparte.</p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.4.1.4) Depositários centrais</h4>
+            <p>Registro/custódia centralizada de ativos (conceito).</p>
+          </div>
+          <div class="card compact cols-4">
+            <h4>1.4.1.5) Entidade registradora</h4>
+            <p>Registra operações/ativos, aumenta transparência e segurança (conceito).</p>
+          </div>
         </div>
-        <div class="card compact cols-4">
-          <h4>1.4.1.5) Entidade registradora</h4>
-          <p>Registra operações/ativos, aumenta transparência e segurança (conceito).</p>
+      </section>
+
+      <section class="anchor" id="estabilidade-bacen">
+        <h3>1.4.2) Normas e procedimentos do Bacen para estabilidade financeira</h3>
+
+        <div class="card compact">
+          <h4>1.4.2.1) Comef, Compulsório, LLI e LLT</h4>
+          <ul>
+            <li><b>Comef</b>: comitê/estrutura focada em estabilidade (conceito no programa).</li>
+            <li><b>Compulsório</b>: ferramenta para ajustar liquidez e reduzir risco sistêmico.</li>
+            <li><b>LLI/LLT</b>: linhas de liquidez (conceito de apoio a estabilidade).</li>
+          </ul>
         </div>
-      </div>
+      </section>
+
+      <section class="anchor" id="intermediacao-risco-sistemico">
+        <h3>1.4.3) Ferramentas do Bacen para intermediação + risco sistêmico</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.4.3.1) Risco sistêmico</h4>
+            <ul>
+              <li>Risco de um problema em uma instituição/mercado se espalhar e comprometer o sistema como um todo.</li>
+              <li>IMFs, capital regulatório e liquidez existem para reduzir isso.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.4.3.2) Basileia I, II e III + riscos (liquidez e alavancagem)</h4>
+            <ul>
+              <li>Regras de capital e gestão de risco para proteger o sistema e a economia real.</li>
+              <li>Prova cobra: “Basileia busca reduzir riscos e evitar crises sistêmicas”.</li>
+              <li>Ênfase: <b>liquidez</b>, <b>alavancagem</b> e suficiência de capital.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="clearing-contraparte">
+        <h3>1.4.4) Clearing houses • 1.4.5) Risco de contraparte</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>Clearings (funções)</h4>
+            <ul>
+              <li>Compensação e liquidação com gerenciamento de risco.</li>
+              <li>Margens/garantias e regras de inadimplência (conceito).</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>Risco de contraparte (impacto)</h4>
+            <ul>
+              <li>Risco de a outra parte não cumprir.</li>
+              <li>Mitigação: CCP, margens, garantias, netting e regras de liquidação.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="b3-selic-respons">
+        <h3>1.4.6) B3 e Selic — responsabilidades</h3>
+        <div class="callout">
+          <b>Ideia:</b> são partes-chave da infraestrutura (negociação, registro, compensação, liquidação, custódia),
+          com regras para segurança e eficiência.
+        </div>
+      </section>
+
+      <section class="anchor" id="portabilidade-desintermediacao">
+        <h3>1.4.7) Portabilidade de custódia • 1.4.8) Desintermediação financeira</h3>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>Portabilidade de custódia</h4>
+            <ul>
+              <li>Transferência de custódia de ativos entre instituições.</li>
+              <li>Objetivo: facilitar concorrência e reduzir fricção para o investidor.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>Desintermediação financeira</h4>
+            <ul>
+              <li>Quando agentes acessam mercado/capital diretamente (menos “intermediário bancário”).</li>
+              <li>Ex.: empresas captando via mercado de capitais.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor" id="bsm">
+        <h3>1.4.9) BSM (supervisão de mercados)</h3>
+        <div class="card compact">
+          <ul>
+            <li>Estrutura de supervisão ligada ao ambiente de mercado organizado (conceito cobrado em prova).</li>
+            <li>Foco: monitoramento e integridade do mercado.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="anchor" id="classificacao-investidores">
+        <h3>1.4.10) Classificação de pessoas investidoras (qualificada, profissional e não-residente)</h3>
+
+        <div class="grid">
+          <div class="card compact cols-4">
+            <h4>Qualificada</h4>
+            <ul>
+              <li>Enquadramento por critérios regulatórios (conceito).</li>
+              <li>Acesso a produtos com menos restrição.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-4">
+            <h4>Profissional</h4>
+            <ul>
+              <li>Enquadramento mais “alto” e especializado.</li>
+              <li>Mais liberdade e menos proteção em certos produtos.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-4">
+            <h4>Não-residente</h4>
+            <ul>
+              <li>Investidor com regras específicas (cadastro, tributação e fluxo).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.4.10.1) Regras de enquadramento (Resolução CVM 30)</h4>
+          <ul>
+            <li>Prova pode cobrar o <b>conceito</b>: critérios de enquadramento existem e mudam acesso a produtos e
+              deveres de informação.</li>
+            <li>O essencial é: <b>identificar o tipo</b> e aplicar <b>regras de oferta e adequação</b>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="anchor" id="liberdade-economica">
+        <h3>1.4.11) Lei de Liberdade Econômica (Lei 13.874/19)</h3>
+        <div class="card compact">
+          <ul>
+            <li>Diretriz de redução de burocracia e estímulo ao ambiente de negócios.</li>
+            <li>Prova cobra como “garantia de livre mercado” (conceito).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="anchor" id="anbima-codigo">
+        <h3>1.4.12) Autorregulação ANBIMA — Código de Distribuição de Produtos de Investimento (o que CAI MESMO)</h3>
+        <div class="tag warn">Aqui é onde a prova pega: conduta, KYC, suitability, publicidade, remuneração</div>
+
+        <div class="grid">
+          <div class="card compact cols-6">
+            <h4>1.4.12.1.1) Objetivo e abrangência (Título I, Cap. I)</h4>
+            <ul>
+              <li>Estabelecer padrões de conduta e regras para distribuição.</li>
+              <li>Aplica-se às instituições aderentes e seus profissionais.</li>
+            </ul>
+          </div>
+          <div class="card compact cols-6">
+            <h4>1.4.12.1.2) Princípios gerais de conduta (Título II, Cap. III)</h4>
+            <ul>
+              <li>Ética, diligência, transparência, lealdade ao cliente, integridade.</li>
+              <li>Comunicação clara e completa (sem induzir erro).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card compact">
+          <h4>1.4.12.1.3) Regras gerais de distribuição (Título III, Cap. IV) — checklist</h4>
+          <ul>
+            <li><b>1.4.12.1.3.1) Conheça sua clientela (KYC)</b>: cadastro, perfil, objetivo, capacidade financeira e
+              atualização.</li>
+            <li><b>1.4.12.1.3.2) Suitability</b>: adequar produto ao perfil/objetivo; registrar e monitorar.</li>
+            <li><b>1.4.12.1.3.3) Publicidade</b>: não enganar; deve ser clara; riscos visíveis.</li>
+            <li><b>1.4.12.1.3.4) Transparência de remuneração</b>: deixar claro como o canal é remunerado (sem ocultar
+              conflito).</li>
+            <li><b>1.4.12.1.3.5) Intermediação no exterior</b>: regras e cuidados de oferta/serviço (conceito).</li>
+            <li><b>1.4.12.1.3.6) Transferência de produtos</b>: portabilidade/transferência conforme regras.</li>
+            <li><b>1.4.12.1.3.7) Apuração de valores de referência</b>: critérios e transparência.</li>
+          </ul>
+        </div>
+
+        <div class="card compact">
+          <h4>1.4.12.1.3.8) Distribuição para o Private (Título IV, Cap. XIV)</h4>
+          <ul>
+            <li>Exige padrão reforçado de registro, transparência, adequação e conduta (conceito).</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <b>Prova (padrão de pegadinha):</b> prometer rentabilidade / esconder risco / empurrar produto inadequado /
+          omitir conflito →
+          tudo isso viola princípios de conduta + suitability + publicidade.
+        </div>
+      </section>
+
     </section>
 
-    <section class="anchor" id="estabilidade-bacen">
-      <h3>1.4.2) Normas e procedimentos do Bacen para estabilidade financeira</h3>
-
-      <div class="card compact">
-        <h4>1.4.2.1) Comef, Compulsório, LLI e LLT</h4>
-        <ul>
-          <li><b>Comef</b>: comitê/estrutura focada em estabilidade (conceito no programa).</li>
-          <li><b>Compulsório</b>: ferramenta para ajustar liquidez e reduzir risco sistêmico.</li>
-          <li><b>LLI/LLT</b>: linhas de liquidez (conceito de apoio a estabilidade).</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="anchor" id="intermediacao-risco-sistemico">
-      <h3>1.4.3) Ferramentas do Bacen para intermediação + risco sistêmico</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.4.3.1) Risco sistêmico</h4>
-          <ul>
-            <li>Risco de um problema em uma instituição/mercado se espalhar e comprometer o sistema como um todo.</li>
-            <li>IMFs, capital regulatório e liquidez existem para reduzir isso.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.4.3.2) Basileia I, II e III + riscos (liquidez e alavancagem)</h4>
-          <ul>
-            <li>Regras de capital e gestão de risco para proteger o sistema e a economia real.</li>
-            <li>Prova cobra: “Basileia busca reduzir riscos e evitar crises sistêmicas”.</li>
-            <li>Ênfase: <b>liquidez</b>, <b>alavancagem</b> e suficiência de capital.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="clearing-contraparte">
-      <h3>1.4.4) Clearing houses • 1.4.5) Risco de contraparte</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>Clearings (funções)</h4>
-          <ul>
-            <li>Compensação e liquidação com gerenciamento de risco.</li>
-            <li>Margens/garantias e regras de inadimplência (conceito).</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>Risco de contraparte (impacto)</h4>
-          <ul>
-            <li>Risco de a outra parte não cumprir.</li>
-            <li>Mitigação: CCP, margens, garantias, netting e regras de liquidação.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="b3-selic-respons">
-      <h3>1.4.6) B3 e Selic — responsabilidades</h3>
-      <div class="callout">
-        <b>Ideia:</b> são partes-chave da infraestrutura (negociação, registro, compensação, liquidação, custódia),
-        com regras para segurança e eficiência.
-      </div>
-    </section>
-
-    <section class="anchor" id="portabilidade-desintermediacao">
-      <h3>1.4.7) Portabilidade de custódia • 1.4.8) Desintermediação financeira</h3>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>Portabilidade de custódia</h4>
-          <ul>
-            <li>Transferência de custódia de ativos entre instituições.</li>
-            <li>Objetivo: facilitar concorrência e reduzir fricção para o investidor.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>Desintermediação financeira</h4>
-          <ul>
-            <li>Quando agentes acessam mercado/capital diretamente (menos “intermediário bancário”).</li>
-            <li>Ex.: empresas captando via mercado de capitais.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="anchor" id="bsm">
-      <h3>1.4.9) BSM (supervisão de mercados)</h3>
-      <div class="card compact">
-        <ul>
-          <li>Estrutura de supervisão ligada ao ambiente de mercado organizado (conceito cobrado em prova).</li>
-          <li>Foco: monitoramento e integridade do mercado.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="anchor" id="classificacao-investidores">
-      <h3>1.4.10) Classificação de pessoas investidoras (qualificada, profissional e não-residente)</h3>
-
-      <div class="grid">
-        <div class="card compact cols-4">
-          <h4>Qualificada</h4>
-          <ul>
-            <li>Enquadramento por critérios regulatórios (conceito).</li>
-            <li>Acesso a produtos com menos restrição.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-4">
-          <h4>Profissional</h4>
-          <ul>
-            <li>Enquadramento mais “alto” e especializado.</li>
-            <li>Mais liberdade e menos proteção em certos produtos.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-4">
-          <h4>Não-residente</h4>
-          <ul>
-            <li>Investidor com regras específicas (cadastro, tributação e fluxo).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.4.10.1) Regras de enquadramento (Resolução CVM 30)</h4>
-        <ul>
-          <li>Prova pode cobrar o <b>conceito</b>: critérios de enquadramento existem e mudam acesso a produtos e deveres de informação.</li>
-          <li>O essencial é: <b>identificar o tipo</b> e aplicar <b>regras de oferta e adequação</b>.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="anchor" id="liberdade-economica">
-      <h3>1.4.11) Lei de Liberdade Econômica (Lei 13.874/19)</h3>
-      <div class="card compact">
-        <ul>
-          <li>Diretriz de redução de burocracia e estímulo ao ambiente de negócios.</li>
-          <li>Prova cobra como “garantia de livre mercado” (conceito).</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="anchor" id="anbima-codigo">
-      <h3>1.4.12) Autorregulação ANBIMA — Código de Distribuição de Produtos de Investimento (o que CAI MESMO)</h3>
-      <div class="tag warn">Aqui é onde a prova pega: conduta, KYC, suitability, publicidade, remuneração</div>
-
-      <div class="grid">
-        <div class="card compact cols-6">
-          <h4>1.4.12.1.1) Objetivo e abrangência (Título I, Cap. I)</h4>
-          <ul>
-            <li>Estabelecer padrões de conduta e regras para distribuição.</li>
-            <li>Aplica-se às instituições aderentes e seus profissionais.</li>
-          </ul>
-        </div>
-        <div class="card compact cols-6">
-          <h4>1.4.12.1.2) Princípios gerais de conduta (Título II, Cap. III)</h4>
-          <ul>
-            <li>Ética, diligência, transparência, lealdade ao cliente, integridade.</li>
-            <li>Comunicação clara e completa (sem induzir erro).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card compact">
-        <h4>1.4.12.1.3) Regras gerais de distribuição (Título III, Cap. IV) — checklist</h4>
-        <ul>
-          <li><b>1.4.12.1.3.1) Conheça sua clientela (KYC)</b>: cadastro, perfil, objetivo, capacidade financeira e atualização.</li>
-          <li><b>1.4.12.1.3.2) Suitability</b>: adequar produto ao perfil/objetivo; registrar e monitorar.</li>
-          <li><b>1.4.12.1.3.3) Publicidade</b>: não enganar; deve ser clara; riscos visíveis.</li>
-          <li><b>1.4.12.1.3.4) Transparência de remuneração</b>: deixar claro como o canal é remunerado (sem ocultar conflito).</li>
-          <li><b>1.4.12.1.3.5) Intermediação no exterior</b>: regras e cuidados de oferta/serviço (conceito).</li>
-          <li><b>1.4.12.1.3.6) Transferência de produtos</b>: portabilidade/transferência conforme regras.</li>
-          <li><b>1.4.12.1.3.7) Apuração de valores de referência</b>: critérios e transparência.</li>
-        </ul>
-      </div>
-
-      <div class="card compact">
-        <h4>1.4.12.1.3.8) Distribuição para o Private (Título IV, Cap. XIV)</h4>
-        <ul>
-          <li>Exige padrão reforçado de registro, transparência, adequação e conduta (conceito).</li>
-        </ul>
-      </div>
-
-      <div class="callout">
-        <b>Prova (padrão de pegadinha):</b> prometer rentabilidade / esconder risco / empurrar produto inadequado / omitir conflito →
-        tudo isso viola princípios de conduta + suitability + publicidade.
-      </div>
-    </section>
-
-  </section>
-
-  <!-- =========================
+    <!-- =========================
        MINI-QUIZ (rápido e objetivo)
   ========================== -->
-  <section class="card anchor" id="quiz">
-    <h2>Mini-quiz (SFN completo) — nível prova</h2>
+    <section class="card anchor" id="quiz">
+      <h2>Mini-quiz (SFN completo) — nível prova</h2>
 
-    <div class="quiz" data-quiz="sfn_full">
-      <button class="btn" onclick="gradeQuiz('sfn_full')">CORRIGIR QUIZ</button>
-      <button class="btn" onclick="resetQuiz('sfn_full')">LIMPAR</button>
-      <div class="result" id="res_sfn_full">Marca as alternativas e clica em CORRIGIR.</div>
+      <div class="quiz" data-quiz="sfn_full">
+        <button class="btn" onclick="gradeQuiz('sfn_full')">CORRIGIR QUIZ</button>
+        <button class="btn" onclick="resetQuiz('sfn_full')">LIMPAR</button>
+        <div class="result" id="res_sfn_full">Marca as alternativas e clica em CORRIGIR.</div>
 
-      <div class="q" data-answer="c">
-        <div class="stem">Q1) Quem é o órgão normativo máximo do SFN (diretrizes monetária/creditícia/cambial)?</div>
-        <label><input type="radio" name="q1" value="a"> a) CVM</label>
-        <label><input type="radio" name="q1" value="b"> b) BACEN</label>
-        <label><input type="radio" name="q1" value="c"> c) CMN</label>
-        <label><input type="radio" name="q1" value="d"> d) ANBIMA</label>
+        <div class="q" data-answer="c">
+          <div class="stem">Q1) Quem é o órgão normativo máximo do SFN (diretrizes monetária/creditícia/cambial)?</div>
+          <label><input type="radio" name="q1" value="a"> a) CVM</label>
+          <label><input type="radio" name="q1" value="b"> b) BACEN</label>
+          <label><input type="radio" name="q1" value="c"> c) CMN</label>
+          <label><input type="radio" name="q1" value="d"> d) ANBIMA</label>
+        </div>
+
+        <div class="q" data-answer="b">
+          <div class="stem">Q2) Quem supervisiona previdência complementar fechada (fundos de pensão/EFPC)?</div>
+          <label><input type="radio" name="q2" value="a"> a) SUSEP</label>
+          <label><input type="radio" name="q2" value="b"> b) PREVIC</label>
+          <label><input type="radio" name="q2" value="c"> c) CVM</label>
+          <label><input type="radio" name="q2" value="d"> d) CMN</label>
+        </div>
+
+        <div class="q" data-answer="a">
+          <div class="stem">Q3) O sistema de liquidação/custódia de títulos públicos federais é:</div>
+          <label><input type="radio" name="q3" value="a"> a) Selic (sistema)</label>
+          <label><input type="radio" name="q3" value="b"> b) SPB</label>
+          <label><input type="radio" name="q3" value="c"> c) SPI</label>
+          <label><input type="radio" name="q3" value="d"> d) SUSEP</label>
+        </div>
+
+        <div class="q" data-answer="d">
+          <div class="stem">Q4) Qual alternativa é uma regra típica do Código ANBIMA de distribuição?</div>
+          <label><input type="radio" name="q4" value="a"> a) Fixar a meta Selic</label>
+          <label><input type="radio" name="q4" value="b"> b) Definir metas de inflação</label>
+          <label><input type="radio" name="q4" value="c"> c) Autorizar oferta pública de ações</label>
+          <label><input type="radio" name="q4" value="d"> d) Suitability, KYC, publicidade e transparência de
+            remuneração</label>
+        </div>
+
+        <div class="q" data-answer="b">
+          <div class="stem">Q5) Política monetária contracionista, em geral, tende a:</div>
+          <label><input type="radio" name="q5" value="a"> a) Aumentar liquidez e reduzir juros</label>
+          <label><input type="radio" name="q5" value="b"> b) Reduzir liquidez e elevar juros</label>
+          <label><input type="radio" name="q5" value="c"> c) Reduzir impostos e aumentar gasto público</label>
+          <label><input type="radio" name="q5" value="d"> d) Aumentar o PIB automaticamente</label>
+        </div>
+
       </div>
 
-      <div class="q" data-answer="b">
-        <div class="stem">Q2) Quem supervisiona previdência complementar fechada (fundos de pensão/EFPC)?</div>
-        <label><input type="radio" name="q2" value="a"> a) SUSEP</label>
-        <label><input type="radio" name="q2" value="b"> b) PREVIC</label>
-        <label><input type="radio" name="q2" value="c"> c) CVM</label>
-        <label><input type="radio" name="q2" value="d"> d) CMN</label>
-      </div>
+      <div class="footer">Depois eu coloco banco de questões por tópico (CMN/BC/CVM/infra/políticas) no mesmo padrão dos
+        seus blocos antigos.</div>
+    </section>
 
-      <div class="q" data-answer="a">
-        <div class="stem">Q3) O sistema de liquidação/custódia de títulos públicos federais é:</div>
-        <label><input type="radio" name="q3" value="a"> a) Selic (sistema)</label>
-        <label><input type="radio" name="q3" value="b"> b) SPB</label>
-        <label><input type="radio" name="q3" value="c"> c) SPI</label>
-        <label><input type="radio" name="q3" value="d"> d) SUSEP</label>
-      </div>
+  </main>
 
-      <div class="q" data-answer="d">
-        <div class="stem">Q4) Qual alternativa é uma regra típica do Código ANBIMA de distribuição?</div>
-        <label><input type="radio" name="q4" value="a"> a) Fixar a meta Selic</label>
-        <label><input type="radio" name="q4" value="b"> b) Definir metas de inflação</label>
-        <label><input type="radio" name="q4" value="c"> c) Autorizar oferta pública de ações</label>
-        <label><input type="radio" name="q4" value="d"> d) Suitability, KYC, publicidade e transparência de remuneração</label>
-      </div>
+  <!-- ✅ mesmo JS antigo, só renomeado -->
+  <script src="./js/cpa-ui.js" defer></script>
 
-      <div class="q" data-answer="b">
-        <div class="stem">Q5) Política monetária contracionista, em geral, tende a:</div>
-        <label><input type="radio" name="q5" value="a"> a) Aumentar liquidez e reduzir juros</label>
-        <label><input type="radio" name="q5" value="b"> b) Reduzir liquidez e elevar juros</label>
-        <label><input type="radio" name="q5" value="c"> c) Reduzir impostos e aumentar gasto público</label>
-        <label><input type="radio" name="q5" value="d"> d) Aumentar o PIB automaticamente</label>
-      </div>
+  <script>
+    function gradeQuiz(id) {
+      const quiz = document.querySelector(`.quiz[data-quiz="${id}"]`);
+      const qs = quiz.querySelectorAll(".q");
+      let correct = 0;
+      let total = qs.length;
 
-    </div>
+      qs.forEach((q) => {
+        const ans = q.getAttribute("data-answer");
+        const chosen = q.querySelector('input[type="radio"]:checked');
+        const chosenVal = chosen ? chosen.value : null;
 
-    <div class="footer">Depois eu coloco banco de questões por tópico (CMN/BC/CVM/infra/políticas) no mesmo padrão dos seus blocos antigos.</div>
-  </section>
+        q.style.borderColor = "rgba(255,255,255,.10)";
 
-</main>
+        if (chosenVal === ans) {
+          correct++;
+          q.style.borderColor = "rgba(66,211,146,.45)";
+        } else {
+          q.style.borderColor = "rgba(251,113,133,.45)";
+        }
+      });
 
-<!-- ✅ mesmo JS antigo, só renomeado -->
-<script src="./js/cpa-ui.js" defer></script>
-
-<script>
-function gradeQuiz(id){
-  const quiz = document.querySelector(`.quiz[data-quiz="${id}"]`);
-  const qs = quiz.querySelectorAll(".q");
-  let correct = 0;
-  let total = qs.length;
-
-  qs.forEach((q) => {
-    const ans = q.getAttribute("data-answer");
-    const chosen = q.querySelector('input[type="radio"]:checked');
-    const chosenVal = chosen ? chosen.value : null;
-
-    q.style.borderColor = "rgba(255,255,255,.10)";
-
-    if(chosenVal === ans){
-      correct++;
-      q.style.borderColor = "rgba(66,211,146,.45)";
-    }else{
-      q.style.borderColor = "rgba(251,113,133,.45)";
+      const res = document.getElementById(`res_${id}`);
+      const pct = Math.round((correct / total) * 100);
+      res.innerHTML = `Resultado: <span class="${pct >= 75 ? 'good' : 'badx'}">${correct}/${total} (${pct}%)</span> — ${pct >= 75 ? 'bom' : 'refaz os tópicos e tenta de novo'}.`;
     }
-  });
 
-  const res = document.getElementById(`res_${id}`);
-  const pct = Math.round((correct/total)*100);
-  res.innerHTML = `Resultado: <span class="${pct>=75?'good':'badx'}">${correct}/${total} (${pct}%)</span> — ${pct>=75?'bom':'refaz os tópicos e tenta de novo'}.`;
-}
+    function resetQuiz(id) {
+      const quiz = document.querySelector(`.quiz[data-quiz="${id}"]`);
+      quiz.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
+      quiz.querySelectorAll(".q").forEach(q => q.style.borderColor = "rgba(255,255,255,.10)");
+      document.getElementById(`res_${id}`).textContent = "Marca as alternativas e clica em CORRIGIR.";
+    }
+  </script>
 
-function resetQuiz(id){
-  const quiz = document.querySelector(`.quiz[data-quiz="${id}"]`);
-  quiz.querySelectorAll('input[type="radio"]').forEach(i => i.checked=false);
-  quiz.querySelectorAll(".q").forEach(q => q.style.borderColor = "rgba(255,255,255,.10)");
-  document.getElementById(`res_${id}`).textContent = "Marca as alternativas e clica em CORRIGIR.";
-}
-</script>
-
+  <script src="./js/layout.js" defer></script>
 </body>
+
 </html>
