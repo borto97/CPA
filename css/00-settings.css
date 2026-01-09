@@ -1,4 +1,37 @@
-:root{
+:root {
+  /* layout */
+  --header-h: 74px;
+
+  /* TOC */
+  --toc-w: 360px;
+  --toc-handle: 22px;
+  --toc-edge: 22px;
+
+  /* base (dark) */
+  --bg: #0b1020;
+  --panel: #121a33;
+  --panel2: #0f1730;
+
+  --text: #e8ecff;
+  --muted: #b9c2ff;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #7c5cff;
+
+  --ok: #42d392;
+  --warn: #fbbf24;
+  --bad: #fb7185;
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* ===== THEMES (data-theme no <html>) ===== */
+
+html[data-theme="dark"]{
   --bg:#0b1020;
   --panel:#121a33;
   --panel2:#0f1730;
@@ -6,18 +39,104 @@
   --muted:#b9c2ff;
   --line:rgba(255,255,255,.10);
   --accent:#7c5cff;
-  --ok:#42d392;
-  --warn:#fbbf24;
-  --bad:#fb7185;
-
-  --radius:16px;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
 
-  /* TOC */
-  --toc-w: 220px;
-  --toc-handle: 16px;
-  --toc-edge: 22px;
-  --header-h: 84px;
+html[data-theme="midnight"]{
+  --bg:#070a14;
+  --panel:#0b1020;
+  --panel2:#0a0f1e;
+  --text:#e8ecff;
+  --muted:#aeb8ff;
+  --line:rgba(255,255,255,.09);
+  --accent:#38bdf8;
+}
+
+html[data-theme="forest"]{
+  --bg:#07110b;
+  --panel:#0c1b12;
+  --panel2:#0a160f;
+  --text:#eafff3;
+  --muted:#b5e9c9;
+  --line:rgba(255,255,255,.10);
+  --accent:#42d392;
+}
+
+html[data-theme="sand"]{
+  --bg:#14110b;
+  --panel:#1c1710;
+  --panel2:#18130c;
+  --text:#fff3e0;
+  --muted:#e7d2b4;
+  --line:rgba(255,255,255,.10);
+  --accent:#fbbf24;
+}
+
+html[data-theme="light"]{
+  --bg:#f6f7fb;
+  --panel:#ffffff;
+  --panel2:#f0f2f8;
+  --text:#111827;
+  --muted:#4b5563;
+  --line:rgba(0,0,0,.10);
+  --shadow: 0 10px 30px rgba(0,0,0,.12);
+  --accent:#465EFF;
+  --ok:#16a34a;
+  --warn:#f59e0b;
+  --bad:#ef4444;
+}
+
+/* Banrisul: azul escuro + azul vivo */
+html[data-theme="banrisul"]{
+  --bg:#000050;
+  --panel:#0a0a3f;
+  --panel2:#060633;
+  --text:#e8ecff;
+  --muted:#b9c2ff;
+  --line:rgba(255,255,255,.10);
+  --accent:#0094FF;
+}
+
+/* Banco do Brasil: amarelo institucional como accent */
+html[data-theme="bb"]{
+  --bg:#0b1020;
+  --panel:#111a36;
+  --panel2:#0f1730;
+  --text:#e8ecff;
+  --muted:#c6ccff;
+  --line:rgba(255,255,255,.10);
+  --accent:#FCFC30;
+}
+
+/* opcional: garantir contraste do botão sólido no tema bb */
+html[data-theme="bb"] .btn-solid{ color:#0b1020; }
+
+/* Santander: vermelho institucional como accent e fundo mais “neutro” */
+html[data-theme="santander"] {
+  --bg: #0b0f1a;
+  --panel: #121825;
+  --panel2: #0f1521;
+
+  --text: #e8ecff;
+  --muted: #c7cffc;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #EC0000;
+  /* vermelho Santander */
+  --shadow: 0 10px 30px rgba(0, 0, 0, .38);
+}
+
+/* Itaú: laranja como accent e azuis profundos no fundo (pra não ficar “laranja demais”) */
+html[data-theme="itau"] {
+  --bg: #081226;
+  --panel: #0d1b33;
+  --panel2: #0a162c;
+
+  --text: #e8ecff;
+  --muted: #c7d3ff;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #FF7A00;
+  /* laranja Itaú */
+  --shadow: 0 10px 30px rgba(0, 0, 0, .38);
 }
