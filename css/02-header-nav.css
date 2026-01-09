@@ -7,6 +7,10 @@ header{
   border-bottom:1px solid var(--line);
 }
 
+@supports (background: color-mix(in srgb, black 50%, transparent)){
+  header{ background: color-mix(in srgb, var(--bg) 72%, transparent); }
+}
+
 header .wrap{
   max-width: 1200px;
   margin: 0 auto;
@@ -18,7 +22,6 @@ header .wrap{
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  flex-wrap:nowrap;
 }
 
 .brand{
@@ -28,9 +31,11 @@ header .wrap{
   font-weight:800;
   letter-spacing:.2px;
 }
+
 .brand a{
   font-size:18px;
   letter-spacing:.3px;
+  color: var(--text);
 }
 
 .badge{
@@ -51,6 +56,13 @@ header .wrap{
   align-items:center;
 }
 
+.actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
 .pill{
   padding:8px 12px;
   border-radius:999px;
@@ -69,7 +81,6 @@ header .wrap{
   text-decoration:none;
 }
 
-.pill.active,
 .pill[aria-current="page"]{
   color: var(--text);
   background: rgba(124,92,255,.14);
@@ -77,9 +88,68 @@ header .wrap{
   box-shadow: 0 10px 24px rgba(124,92,255,.14);
 }
 
+@supports (color: color-mix(in srgb, white 50%, black)){
+  .pill[aria-current="page"]{
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+}
+
+/* botão engrenagem no header (ícone-only) */
+.actions .settings-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  padding:0;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  cursor:pointer;
+  font:inherit;
+}
+.actions .settings-btn:hover{ background: rgba(255,255,255,.06); }
+
+.actions .settings-btn .settings-ico{ opacity:.95; }
+.actions .settings-btn span:last-child{ display:none; } /* esconde "Configurações" no header */
+
 @media (max-width: 720px){
   header .wrap{ padding: 10px 12px; }
   .nav{ flex-direction: column; align-items:flex-start; }
   .links{ width:100%; flex-wrap:wrap; justify-content:flex-start; }
+  .actions{ align-self:flex-end; }
   .pill{ padding:7px 10px; border-radius:12px; }
+}
+
+/* ===============================
+   FEEDBACK TAB (fora do conteúdo)
+   =============================== */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* feedback com identidade própria */
+.pill-feedback {
+  background: rgba(255, 255, 255, .06);
+  border: 1px dashed var(--accent);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.pill-feedback:hover {
+  background: rgba(255, 255, 255, .12);
+  border-style: solid;
+}
+
+/* nunca entra como "ativo" de módulo */
+.pill-feedback[aria-current],
+.pill-feedback.active {
+  background: rgba(255, 255, 255, .06);
+  box-shadow: none;
 }
