@@ -1,0 +1,402 @@
+<!-- feedbacks.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Feedbacks — Certifin (CPA)</title>
+
+    <!-- Mantém a MESMA base do site -->
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <main class="fb-page">
+        <div class="wrap">
+            <section class="fb-hero">
+                <div>
+                    <h1 class="fb-title">Feedbacks do Certifin</h1>
+                    <p class="fb-sub">
+                        Aqui é o espaço pra contribuir com melhorias do protótipo: conteúdo, UX/UI e base de
+                        precificação.
+                        Leva menos de 1 minuto.
+                    </p>
+
+                    <div class="fb-actions">
+                        <button class="btn primary" id="btnOpenFeedback">Dar feedback</button>
+                        <a class="btn" href="https://chat.whatsapp.com/DCmkJAPMnlXFLGQ6poQyoT" target="_blank"
+                            rel="noopener">
+                            Entrar no WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="fb-note">
+                        <strong>Observação:</strong> nome e contato são opcionais. Se tu não quiser retorno, deixa em
+                        branco.
+                        Obrigado por contribuir — isso vira melhoria real.
+                    </div>
+
+                    <div class="fb-side" style="margin-top:14px;">
+                        <h3>Comunidade no WhatsApp</h3>
+                        <p>Troca rápida de dúvidas, relatos e sugestões. Link do grupo:</p>
+
+                        <div class="fb-linkbox" title="Link do grupo">
+                            <code id="waLink">https://chat.whatsapp.com/DCmkJAPMnlXFLGQ6poQyoT</code>
+                            <button class="btn" id="btnCopyLink" type="button">Copiar</button>
+                        </div>
+
+                        <div class="fb-mini">
+                            <a class="btn primary" href="https://chat.whatsapp.com/DCmkJAPMnlXFLGQ6poQyoT"
+                                target="_blank" rel="noopener">
+                                Abrir grupo
+                            </a>
+                            <button class="btn" id="btnOpenFeedback2" type="button">Dar feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div class="fb-modalOverlay" id="modalOverlay" aria-hidden="true">
+        <div class="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fbModalTitle">
+            <div class="fb-modalHeader">
+                <div>
+                    <h2 id="fbModalTitle">Enviar feedback</h2>
+                    <p>Leva menos de 1 minuto. Tua resposta vira melhoria real na plataforma.</p>
+                </div>
+                <button class="fb-x" id="btnCloseModal" type="button" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="fb-modalBody">
+                <form id="feedbackForm">
+                    <input type="hidden" name="submitted_at_iso" id="submittedAtIso" value="" />
+
+                    <div class="fb-formGrid">
+                        <!-- Conteúdo -->
+                        <div class="fb-field">
+                            <h3>1) Conteúdo</h3>
+                            <p class="hint">Clareza, organização e aderência ao que cai na prova.</p>
+
+                            <div class="fb-starsRow">
+                                <div class="fb-stars" data-rating="content" aria-label="Nota do conteúdo de 1 a 10">
+                                </div>
+                                <span class="fb-scorePill" id="scoreContent">—/10</span>
+                            </div>
+
+                            <input type="hidden" name="rating_content" id="ratingContent" value="" />
+                        </div>
+
+                        <!-- Layout -->
+                        <div class="fb-field">
+                            <h3>2) UX/UI</h3>
+                            <p class="hint">Navegação, leitura e uso em desktop/mobile.</p>
+
+                            <div class="fb-starsRow">
+                                <div class="fb-stars" data-rating="layout" aria-label="Nota do layout de 1 a 10"></div>
+                                <span class="fb-scorePill" id="scoreLayout">—/10</span>
+                            </div>
+
+                            <input type="hidden" name="rating_layout" id="ratingLayout" value="" />
+                        </div>
+
+                        <!-- Precificação -->
+                        <div class="fb-field" style="grid-column: 1 / -1;">
+                            <h3>3) Base de precificação</h3>
+                            <p class="hint">
+                                Tua resposta entra numa base de precificação (percepção pessoal + de mercado).
+                                É só insumo de decisão: não é cobrança nem oferta.
+                            </p>
+
+                            <div class="fb-priceRow">
+                                <div style="color:var(--muted);font-weight:900;">Valor anual estimado:</div>
+                                <input class="fb-input fb-priceInput" id="priceInput" name="price_estimated_display"
+                                    inputmode="numeric" autocomplete="off" placeholder="R$ 0"
+                                    aria-label="Valor estimado anual (digite o valor)" />
+                            </div>
+
+                            <input type="hidden" name="price_estimated_brl_int" id="priceInt" value="0" />
+
+                            <div class="fb-priceHintSmall">
+                                Digite só números. O <strong>R$</strong> e a formatação são aplicados automaticamente.
+                            </div>
+                        </div>
+
+                        <!-- Comentários -->
+                        <div class="fb-field" style="grid-column: 1 / -1;">
+                            <h3>4) Comentário</h3>
+                            <p class="hint">O que eu deveria corrigir agora? (sem rodeio)</p>
+                            <textarea class="fb-textarea" name="comments" id="comments"
+                                placeholder="Ex.: faltou X; esse trecho confunde; no mobile tal coisa..."></textarea>
+                        </div>
+
+                        <!-- Fase + Identificação -->
+                        <div class="fb-field">
+                            <h3>5) Fase</h3>
+                            <p class="hint">Ajuda a interpretar teu feedback.</p>
+                            <select class="fb-select" name="stage" id="stage">
+                                <option value="">Selecionar…</option>
+                                <option value="estudando">Estou estudando para a CPA</option>
+                                <option value="ja_fiz">Já fiz a prova</option>
+                                <option value="passei">Já passei no CPA</option>
+                            </select>
+                        </div>
+
+                        <div class="fb-field">
+                            <h3>6) Identificação (opcional)</h3>
+                            <p class="hint">Preenche só se quiser retorno.</p>
+                            <div class="fb-row2">
+                                <input class="fb-input" type="text" name="name" id="name"
+                                    placeholder="Nome (opcional)" />
+                                <input class="fb-input" type="text" name="contact" id="contact"
+                                    placeholder="Whats/E-mail (opcional)" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fb-success" id="successBox">
+                        <strong>Feedback enviado!</strong> Valeu por ajudar a melhorar o Certifin. 🙌
+                        <div style="margin-top:10px;">
+                            <a class="btn primary" href="https://chat.whatsapp.com/DCmkJAPMnlXFLGQ6poQyoT"
+                                target="_blank" rel="noopener">
+                                Entrar no WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="fb-modalFooter">
+                        <button class="btn" type="button" id="btnCancel">Cancelar</button>
+                        <button class="btn primary" type="submit" id="btnSubmit">Enviar feedback</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * - Estrelas 1..10
+         * - Precificação digitável com máscara BRL
+         * - Export para Google Sheets via Apps Script Web App
+         */
+        (function () {
+            const WA_LINK = "https://chat.whatsapp.com/DCmkJAPMnlXFLGQ6poQyoT";
+
+            // COLE A URL DO TEU WEB APP AQUI (Apps Script -> Deploy -> Web app)
+            const APPS_SCRIPT_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzNYUoLsi8QknUoRRxwULwZ4D7ZDRWHTawN5Rg90vhZaH2YZgWyEj8bkl_WGJJMKQP3/exec"; // ex: "https://script.google.com/macros/s/AKfycbxxxx/exec"
+
+            const brlInt = (n) => {
+                try {
+                    return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
+                } catch (e) {
+                    return "R$ " + String(n);
+                }
+            };
+
+            const onlyDigits = (s) => (s || "").replace(/\D+/g, "");
+
+            function maskBRLInt(inputEl, hiddenIntEl) {
+                const raw = onlyDigits(inputEl.value);
+                const val = raw ? parseInt(raw, 10) : 0;
+                hiddenIntEl.value = String(val);
+                inputEl.value = brlInt(val);
+            }
+
+            // Copy link
+            const btnCopy = document.getElementById("btnCopyLink");
+            btnCopy?.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(WA_LINK);
+                    btnCopy.textContent = "Copiado!";
+                    setTimeout(() => (btnCopy.textContent = "Copiar"), 1200);
+                } catch (e) {
+                    const tmp = document.createElement("textarea");
+                    tmp.value = WA_LINK;
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tmp);
+                    btnCopy.textContent = "Copiado!";
+                    setTimeout(() => (btnCopy.textContent = "Copiar"), 1200);
+                }
+            });
+
+            // Modal open/close
+            const overlay = document.getElementById("modalOverlay");
+            const open1 = document.getElementById("btnOpenFeedback");
+            const open2 = document.getElementById("btnOpenFeedback2");
+            const closeX = document.getElementById("btnCloseModal");
+            const cancel = document.getElementById("btnCancel");
+
+            const openModal = () => {
+                overlay.classList.add("open");
+                overlay.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            };
+            const closeModal = () => {
+                overlay.classList.remove("open");
+                overlay.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            };
+
+            open1?.addEventListener("click", openModal);
+            open2?.addEventListener("click", openModal);
+            closeX?.addEventListener("click", closeModal);
+            cancel?.addEventListener("click", closeModal);
+            overlay?.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+            window.addEventListener("keydown", (e) => { if (e.key === "Escape" && overlay.classList.contains("open")) closeModal(); });
+
+            // Stars 1..10
+            function mountStars(container, onPick) {
+                container.innerHTML = "";
+                for (let i = 1; i <= 10; i++) {
+                    const b = document.createElement("button");
+                    b.type = "button";
+                    b.className = "fb-star";
+                    b.textContent = "★";
+                    b.setAttribute("data-v", String(i));
+                    b.setAttribute("aria-label", `Nota ${i} de 10`);
+                    b.addEventListener("click", () => onPick(i));
+                    container.appendChild(b);
+                }
+            }
+
+            function setStars(container, value) {
+                const btns = [...container.querySelectorAll(".fb-star")];
+                btns.forEach((b) => {
+                    const v = Number(b.getAttribute("data-v") || "0");
+                    b.classList.toggle("on", v <= value);
+                });
+            }
+
+            const starsContent = document.querySelector('.fb-stars[data-rating="content"]');
+            const starsLayout = document.querySelector('.fb-stars[data-rating="layout"]');
+
+            const ratingContentEl = document.getElementById("ratingContent");
+            const ratingLayoutEl = document.getElementById("ratingLayout");
+            const scoreContent = document.getElementById("scoreContent");
+            const scoreLayout = document.getElementById("scoreLayout");
+
+            let ratingContent = 0;
+            let ratingLayout = 0;
+
+            mountStars(starsContent, (v) => {
+                ratingContent = v;
+                ratingContentEl.value = String(v);
+                setStars(starsContent, v);
+                scoreContent.textContent = `${v}/10`;
+            });
+
+            mountStars(starsLayout, (v) => {
+                ratingLayout = v;
+                ratingLayoutEl.value = String(v);
+                setStars(starsLayout, v);
+                scoreLayout.textContent = `${v}/10`;
+            });
+
+            // Precificação
+            const priceInput = document.getElementById("priceInput");
+            const priceInt = document.getElementById("priceInt");
+
+            priceInput.value = brlInt(0);
+            priceInt.value = "0";
+
+            priceInput.addEventListener("input", () => maskBRLInt(priceInput, priceInt));
+            priceInput.addEventListener("focus", () => {
+                const digits = onlyDigits(priceInput.value);
+                if (!digits || parseInt(digits, 10) === 0) priceInput.value = "R$ ";
+            });
+            priceInput.addEventListener("blur", () => maskBRLInt(priceInput, priceInt));
+
+            // Timestamp
+            const submittedAtIsoEl = document.getElementById("submittedAtIso");
+            const nowISO = () => new Date().toISOString();
+            const nowLocal = () => {
+                try { return new Date().toLocaleString("pt-BR", { hour12: false }); }
+                catch (e) { return new Date().toString(); }
+            };
+
+            // Submit
+            const form = document.getElementById("feedbackForm");
+            const successBox = document.getElementById("successBox");
+            const btnSubmit = document.getElementById("btnSubmit");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                if (!ratingContent || !ratingLayout) {
+                    alert("Por favor, selecione uma nota (1 a 10) para Conteúdo e para UX/UI.");
+                    return;
+                }
+
+                maskBRLInt(priceInput, priceInt);
+
+                const iso = nowISO();
+                submittedAtIsoEl.value = iso;
+
+                const payload = {
+                    name: (document.getElementById("name").value || "").trim(),
+                    submitted_at_local: nowLocal(),
+                    submitted_at_iso: iso,
+
+                    rating_content: ratingContent,
+                    rating_layout: ratingLayout,
+
+                    price_estimated_display: (priceInput.value || "").trim(),
+                    price_estimated_brl_int: Number(priceInt.value || 0),
+
+                    comments: (document.getElementById("comments").value || "").trim(),
+                    stage: (document.getElementById("stage").value || "").trim(),
+                    contact: (document.getElementById("contact").value || "").trim(),
+
+                    page: location.pathname || "feedbacks.html",
+                    user_agent: navigator.userAgent || ""
+                };
+
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = "Enviando...";
+
+                try {
+                    // fallback local
+                    const key = "certifin_feedbacks";
+                    const prev = JSON.parse(localStorage.getItem(key) || "[]");
+                    prev.push(payload);
+                    localStorage.setItem(key, JSON.stringify(prev));
+
+                    // Export para Apps Script
+                    if (APPS_SCRIPT_WEBAPP_URL) {
+                        // mode:'no-cors' evita bloqueio CORS do Web App em alguns casos
+                        await fetch(APPS_SCRIPT_WEBAPP_URL, {
+                            method: "POST",
+                            mode: "no-cors",
+                            body: JSON.stringify(payload)
+                        });
+                    }
+
+                    successBox.classList.add("open");
+                    btnSubmit.textContent = "Enviado ✓";
+                } catch (err) {
+                    console.error(err);
+                    alert("Não foi possível enviar agora. Feedback foi salvo localmente (neste dispositivo).");
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = "Enviar feedback";
+                    return;
+                }
+
+                setTimeout(() => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = "Enviar feedback";
+                }, 1500);
+            });
+        })();
+    </script>
+
+    <!-- teus scripts globais -->
+    <script src="./js/theme.js"></script>
+    <script src="./js/layout.js"></script>
+    <script src="./js/cpa-ui.js"></script>
+</body>
+
+</html>
