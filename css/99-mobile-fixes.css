@@ -1,0 +1,48 @@
+/* =========================================================
+   MOBILE FIXES (anti-overflow)
+   - só para telas pequenas
+   ========================================================= */
+
+@media (max-width: 520px){
+
+  /* garante que nada force scroll horizontal */
+  html, body{
+    overflow-x: hidden;
+  }
+
+  /* dá um respiro extra e evita conteúdo colar na borda */
+  .wrap{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* cards/tabelas respeitam a tela */
+  .card{
+    max-width: 100%;
+  }
+
+  /* flows: remove min-width que estoura */
+  .node{
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* tabelas: vira scroll horizontal dentro do card (e não a página inteira) */
+  .table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* quebra palavras longas (evita empurrar) */
+  .table th,
+  .table td,
+  .code,
+  .pill,
+  .node,
+  .wrap{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}

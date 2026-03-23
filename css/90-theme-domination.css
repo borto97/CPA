@@ -1,0 +1,87 @@
+/* =========================================================
+   THEME DOMINATION (carrega por ÚLTIMO)
+   Objetivo: fazer o tema "pintar" header, pills, botões e cards.
+   Não mexe em layout (padding/radius), só em cores.
+========================================================= */
+
+/* tokens derivados do tema */
+html {
+    --tint-1: color-mix(in srgb, var(--accent) 26%, var(--panel));
+        --tint-2: color-mix(in srgb, var(--accent) 20%, var(--panel2));
+        --tint-bg: color-mix(in srgb, var(--accent) 14%, var(--bg));
+        --ring: color-mix(in srgb, var(--accent) 70%, transparent);
+
+    --header-bg: linear-gradient(180deg,
+            color-mix(in srgb, var(--accent) 16%, var(--bg)) 0%,
+            color-mix(in srgb, var(--accent) 10%, var(--bg)) 55%,
+            var(--bg) 100%);
+}
+
+/* HEADER */
+header {
+    background: var(--header-bg) !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line)) !important;
+}
+
+header .badge {
+    background: color-mix(in srgb, var(--accent) 14%, transparent) !important;
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--line)) !important;
+}
+
+/* Pills do menu (mantém layout original) */
+header .pill {
+    background: color-mix(in srgb, var(--accent) 10%, var(--panel)) !important;
+    border-color: color-mix(in srgb, var(--accent) 28%, var(--line)) !important;
+}
+
+header .pill:hover {
+    background: color-mix(in srgb, var(--accent) 14%, var(--panel)) !important;
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--line)) !important;
+}
+
+header .pill[aria-current="page"] {
+    background: color-mix(in srgb, var(--accent) 22%, var(--panel)) !important;
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--line)) !important;
+    box-shadow: 0 0 0 3px var(--ring) !important;
+}
+
+/* Botões globais */
+.btn-solid {
+    background: var(--accent) !important;
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent) !important;
+    box-shadow: 0 0 0 3px var(--ring), 0 10px 25px rgba(0, 0, 0, .25) !important;
+}
+
+.btn-outline {
+    background: color-mix(in srgb, var(--accent) 8%, transparent) !important;
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--line)) !important;
+}
+
+/* Cards / caixas comuns */
+.card,
+.panel,
+.box,
+.section,
+.fb-card {
+    background: linear-gradient(180deg, var(--tint-1) 0%, var(--tint-2) 100%) !important;
+    border-color: color-mix(in srgb, var(--accent) 18%, var(--line)) !important;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    border-color: color-mix(in srgb, var(--accent) 22%, var(--line)) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 0 3px var(--ring) !important;
+}
+
+/* Acessibilidade */
+:focus-visible {
+    outline: 3px solid var(--ring) !important;
+    outline-offset: 2px !important;
+}

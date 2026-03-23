@@ -1,0 +1,62 @@
+/* =========================
+   TAGS (temáticas + legíveis)
+   ========================= */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  border: 1px solid var(--line);
+
+  /* em vez de branco fixo, usa o próprio "panel" do tema */
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+
+  /* texto padrão respeita o tema */
+  color: var(--muted);
+
+  font-size: 12px;
+  font-family: var(--mono);
+}
+
+/* estados: usa --ok/--warn/--bad e mistura com --text
+   -> no dark fica claro, no light fica escuro */
+.tag.ok {
+  border-color: color-mix(in srgb, var(--ok) 55%, var(--line));
+  background: color-mix(in srgb, var(--ok) 14%, transparent);
+  color: color-mix(in srgb, var(--ok) 70%, var(--text));
+}
+
+.tag.warn {
+  border-color: color-mix(in srgb, var(--warn) 55%, var(--line));
+  background: color-mix(in srgb, var(--warn) 14%, transparent);
+  color: color-mix(in srgb, var(--warn) 70%, var(--text));
+}
+
+.tag.bad {
+  border-color: color-mix(in srgb, var(--bad) 55%, var(--line));
+  background: color-mix(in srgb, var(--bad) 14%, transparent);
+  color: color-mix(in srgb, var(--bad) 70%, var(--text));
+}
+
+/* bônus: no light, deixa a badge mais “clean” e com borda um pouco mais firme */
+html[data-theme="light"] .tag {
+  background: color-mix(in srgb, var(--panel2) 96%, transparent);
+  border-color: color-mix(in srgb, var(--text) 14%, transparent);
+}
+
+.kpi{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.kpi .box{
+  flex:1 1 220px;
+  border:1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 8%, var(--panel));
+  border-radius:14px;
+  padding:12px;
+}
+.kpi .box b{ display:block; font-size:13px; }
+.kpi .box span{ display:block; font-size:12px; color:var(--muted); margin-top:6px; }
