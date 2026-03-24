@@ -492,3 +492,67 @@ html[data-theme="light"] .tag {
 html.modal-open {
     overflow: hidden;
 }
+
+/* =========================================================
+   BB — componentes com contraste corrigido
+   ========================================================= */
+
+html[data-theme="bb"] .tag,
+html[data-theme="bb"] .chip,
+html[data-theme="bb"] .gloss {
+    color: #eef3ff;
+    border-color: rgba(255, 255, 255, .22);
+    background: rgba(10, 32, 92, .32);
+}
+
+html[data-theme="bb"] .tag.ok,
+html[data-theme="bb"] .tag.warn,
+html[data-theme="bb"] .tag.bad {
+    color: #f7f9ff;
+}
+
+html[data-theme="bb"] .kv .item strong,
+html[data-theme="bb"] .node h4,
+html[data-theme="bb"] .riskbox h3,
+html[data-theme="bb"] .q .stem,
+html[data-theme="bb"] .table thead th,
+html[data-theme="bb"] .kpi .box b {
+    color: #f7f9ff;
+}
+
+html[data-theme="bb"] .kv .item span,
+html[data-theme="bb"] .node p,
+html[data-theme="bb"] .risk .pillr span,
+html[data-theme="bb"] .kpi .box span,
+html[data-theme="bb"] .result,
+html[data-theme="bb"] .small {
+    color: #dbe4ff;
+}
+
+/* texto de tabela */
+html[data-theme="bb"] .table tbody td {
+    color: #eef3ff;
+}
+
+/* código e caixas com fonte mono */
+html[data-theme="bb"] .code,
+html[data-theme="bb"] code,
+html[data-theme="bb"] pre,
+html[data-theme="bb"] .kbd {
+    color: #f5f7ff;
+}
+
+/* quiz */
+html[data-theme="bb"] .q label {
+    color: #e6eeff;
+}
+
+html[data-theme="bb"] .q label:hover {
+    color: #ffffff;
+}
+
+/* callouts */
+html[data-theme="bb"] .callout,
+html[data-theme="bb"] .callout strong {
+    color: #f7f9ff;
+}
