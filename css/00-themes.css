@@ -154,22 +154,16 @@ html[data-theme="banrisul"] {
 /* ---------- Banco do Brasil (azul dominante + amarelo destaque) ---------- */
 html[data-theme="bb"] {
   --bg: #f2df00;
-
   --panel: #12307a;
   --panel2: #0d255f;
 
-  /* texto em cards azuis */
+  /* texto claro para superfícies azuis */
   --text: #f7f9ff;
   --muted: #d7e0ff;
-
   --line: rgba(255, 255, 255, .14);
 
-  /* amarelo BB */
   --accent: #ffdf00;
-
-  /* azul BB */
   --accent2: #1f4aa8;
-
   --ring: rgba(255, 223, 0, .34);
 
   --radius: 12px;
@@ -178,7 +172,7 @@ html[data-theme="bb"] {
   --grad-a: rgba(255, 223, 0, .18);
   --grad-b: rgba(31, 74, 168, .10);
 
-  /* textos sobre fundo amarelo */
+  /* texto sobre fundo amarelo */
   --text-on-yellow: #18357d;
   --muted-on-yellow: #27468f;
 }

@@ -136,26 +136,3 @@ pre,
 .anchor {
   scroll-margin-top: calc(var(--header-h) + 20px);
 }
-
-/* =========================================================
-   Texto sobre fundo amarelo (tema BB)
-   ========================================================= */
-html[data-theme="bb"] body,
-html[data-theme="bb"] main,
-html[data-theme="bb"] .wrap {
-  color: var(--text-on-yellow);
-}
-
-html[data-theme="bb"] p,
-html[data-theme="bb"] li,
-html[data-theme="bb"] .muted,
-html[data-theme="bb"] .small,
-html[data-theme="bb"] .subtitle {
-  color: var(--muted-on-yellow);
-}
-
-html[data-theme="bb"] h1,
-html[data-theme="bb"] h2,
-html[data-theme="bb"] h3 {
-  color: var(--text-on-yellow);
-}

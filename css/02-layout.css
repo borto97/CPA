@@ -262,3 +262,104 @@ footer {
   padding: 28px 0 40px;
   color: var(--muted);
 }
+
+/* =========================================================
+   Banco do Brasil — contraste por contexto
+   ========================================================= */
+
+/* texto sobre fundo amarelo */
+html[data-theme="bb"] body {
+  color: var(--text-on-yellow);
+}
+
+html[data-theme="bb"] .brand a,
+html[data-theme="bb"] .badge {
+  color: var(--text-on-yellow);
+}
+
+html[data-theme="bb"] .content>h1,
+html[data-theme="bb"] .content>h2,
+html[data-theme="bb"] .content>h3,
+html[data-theme="bb"] .hero>div:first-child>h1,
+html[data-theme="bb"] .hero>div:first-child>h2,
+html[data-theme="bb"] .hero>div:first-child>h3 {
+  color: var(--text-on-yellow);
+}
+
+html[data-theme="bb"] .content>p,
+html[data-theme="bb"] .content>ul,
+html[data-theme="bb"] .content>ol,
+html[data-theme="bb"] .content>.muted,
+html[data-theme="bb"] .hero>div:first-child>p,
+html[data-theme="bb"] .hero>div:first-child>.muted,
+html[data-theme="bb"] .kpi-label {
+  color: var(--muted-on-yellow);
+}
+
+/* header e pills mantêm leitura clara */
+html[data-theme="bb"] .pill,
+html[data-theme="bb"] .pill-feedback,
+html[data-theme="bb"] .actions .settings-btn {
+  color: var(--text);
+}
+
+/* superfícies azuis: texto claro */
+html[data-theme="bb"] .card,
+html[data-theme="bb"] .panel,
+html[data-theme="bb"] .box,
+html[data-theme="bb"] .section,
+html[data-theme="bb"] .hero-box,
+html[data-theme="bb"] .kv,
+html[data-theme="bb"] .table,
+html[data-theme="bb"] .quiz,
+html[data-theme="bb"] .riskbox,
+html[data-theme="bb"] .node,
+html[data-theme="bb"] .callout,
+html[data-theme="bb"] .step,
+html[data-theme="bb"] footer {
+  color: var(--text);
+}
+
+html[data-theme="bb"] .card h1,
+html[data-theme="bb"] .card h2,
+html[data-theme="bb"] .card h3,
+html[data-theme="bb"] .card h4,
+html[data-theme="bb"] .panel h1,
+html[data-theme="bb"] .panel h2,
+html[data-theme="bb"] .panel h3,
+html[data-theme="bb"] .panel h4,
+html[data-theme="bb"] .box h1,
+html[data-theme="bb"] .box h2,
+html[data-theme="bb"] .box h3,
+html[data-theme="bb"] .box h4,
+html[data-theme="bb"] .section h1,
+html[data-theme="bb"] .section h2,
+html[data-theme="bb"] .section h3,
+html[data-theme="bb"] .section h4,
+html[data-theme="bb"] .hero-box h1,
+html[data-theme="bb"] .hero-box h2,
+html[data-theme="bb"] .hero-box h3,
+html[data-theme="bb"] .hero-box h4,
+html[data-theme="bb"] .node h4 {
+  color: var(--text);
+}
+
+html[data-theme="bb"] .card p,
+html[data-theme="bb"] .card li,
+html[data-theme="bb"] .card .muted,
+html[data-theme="bb"] .panel p,
+html[data-theme="bb"] .panel li,
+html[data-theme="bb"] .panel .muted,
+html[data-theme="bb"] .box p,
+html[data-theme="bb"] .box li,
+html[data-theme="bb"] .box .muted,
+html[data-theme="bb"] .section p,
+html[data-theme="bb"] .section li,
+html[data-theme="bb"] .section .muted,
+html[data-theme="bb"] .hero-box p,
+html[data-theme="bb"] .hero-box li,
+html[data-theme="bb"] .hero-box .muted,
+html[data-theme="bb"] footer,
+html[data-theme="bb"] footer .muted {
+  color: var(--muted);
+}
