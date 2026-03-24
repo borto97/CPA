@@ -378,3 +378,39 @@ select {
   justify-content: flex-end;
   gap: 10px;
 }
+
+/* override final de contraste para Banco do Brasil */
+html[data-theme="bb"] header {
+  background: linear-gradient(180deg,
+      rgba(255, 223, 0, .96) 0%,
+      rgba(242, 223, 0, .92) 100%) !important;
+  border-bottom: 1px solid rgba(17, 42, 103, .18) !important;
+}
+
+html[data-theme="bb"] header .brand a,
+html[data-theme="bb"] header .badge {
+  color: #18357d !important;
+}
+
+html[data-theme="bb"] header .badge {
+  border-color: rgba(24, 53, 125, .18) !important;
+  background: rgba(24, 53, 125, .08) !important;
+}
+
+html[data-theme="bb"] header .pill {
+  background: #17357f !important;
+  color: #f7f9ff !important;
+  border-color: rgba(255, 223, 0, .45) !important;
+}
+
+html[data-theme="bb"] header .pill:hover,
+html[data-theme="bb"] header .pill[aria-current="page"] {
+  background: #20479f !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="bb"] .btn-solid {
+  color: #17357f !important;
+  background: #ffdf00 !important;
+  border-color: rgba(23, 53, 127, .18) !important;
+}

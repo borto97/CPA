@@ -262,3 +262,22 @@ footer {
   padding: 28px 0 40px;
   color: var(--muted);
 }
+
+/* ajuste específico do hero para BB */
+html[data-theme="bb"] body {
+  background:
+    radial-gradient(1000px 600px at 20% 0%, rgba(255, 223, 0, .20), transparent 55%),
+    radial-gradient(900px 700px at 80% 10%, rgba(31, 74, 168, .08), transparent 55%),
+    #f2df00;
+}
+
+html[data-theme="bb"] .hero-title,
+html[data-theme="bb"] h1 {
+  color: #18357d;
+}
+
+html[data-theme="bb"] .hero-subtitle,
+html[data-theme="bb"] .hero p,
+html[data-theme="bb"] .hero .muted {
+  color: #27468f;
+}
