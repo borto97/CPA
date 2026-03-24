@@ -10,93 +10,98 @@
   --ok: #22c55e;
   --warn: #f59e0b;
   --bad: #ef4444;
+
+  /* superfícies auxiliares */
+  --surface-1: rgba(255, 255, 255, .04);
+  --surface-2: rgba(255, 255, 255, .06);
+  --surface-3: rgba(255, 255, 255, .08);
 }
 
-/* ---------- DARK (padrão) ---------- */
+/* ---------- DARK (neutro profissional) ---------- */
 html[data-theme="dark"] {
-  --bg: #0b1020;
-  --panel: #121a2f;
-  --panel2: #0f1729;
+  --bg: #0b0f1a;
+  --panel: #121829;
+  --panel2: #0f1422;
 
-  --text: #eef2ff;
-  --muted: #b7c1dd;
-  --line: rgba(255, 255, 255, .10);
+  --text: #e6ebff;
+  --muted: #9aa7c7;
+  --line: rgba(255, 255, 255, .08);
 
-  --accent: #6ea8ff;
-  --accent2: #7dd3fc;
-  --ring: rgba(110, 168, 255, .35);
+  --accent: #5c8dff;
+  --accent2: #7aa2ff;
+  --ring: rgba(92, 141, 255, .35);
 
   --radius: 18px;
   --shadow: 0 14px 42px rgba(0, 0, 0, .42);
 
-  --grad-a: rgba(110, 168, 255, .22);
-  --grad-b: rgba(125, 211, 252, .14);
+  --grad-a: rgba(92, 141, 255, .20);
+  --grad-b: rgba(122, 162, 255, .12);
 }
 
-/* ---------- MIDNIGHT ---------- */
+/* ---------- MIDNIGHT (tech / trading) ---------- */
 html[data-theme="midnight"] {
-  --bg: #050816;
-  --panel: #0d1226;
-  --panel2: #0a1020;
+  --bg: #040712;
+  --panel: #0c1328;
+  --panel2: #0a1022;
 
   --text: #edf3ff;
-  --muted: #b8c8ee;
-  --line: rgba(255, 255, 255, .09);
+  --muted: #9fb4ff;
+  --line: rgba(255, 255, 255, .07);
 
-  --accent: #38bdf8;
+  --accent: #3fa7ff;
   --accent2: #22d3ee;
-  --ring: rgba(56, 189, 248, .42);
+  --ring: rgba(63, 167, 255, .40);
 
   --radius: 18px;
-  --shadow: 0 14px 40px rgba(0, 0, 0, .45);
+  --shadow: 0 14px 40px rgba(0, 0, 0, .46);
 
-  --grad-a: rgba(56, 189, 248, .42);
-  --grad-b: rgba(34, 211, 238, .22);
+  --grad-a: rgba(63, 167, 255, .28);
+  --grad-b: rgba(34, 211, 238, .16);
 }
 
-/* ---------- FOREST ---------- */
+/* ---------- FOREST (ESG / sustentabilidade) ---------- */
 html[data-theme="forest"] {
-  --bg: #07110b;
-  --panel: #0c1b12;
-  --panel2: #0a160f;
+  --bg: #06110a;
+  --panel: #0b1c13;
+  --panel2: #08170f;
 
-  --text: #eafff3;
-  --muted: #b5e9c9;
-  --line: rgba(255, 255, 255, .095);
+  --text: #e9fff4;
+  --muted: #9fd7b5;
+  --line: rgba(255, 255, 255, .08);
 
-  --accent: #42d392;
+  --accent: #34d399;
   --accent2: #22c55e;
-  --ring: rgba(66, 211, 146, .50);
+  --ring: rgba(52, 211, 153, .44);
 
   --radius: 20px;
   --shadow: 0 10px 26px rgba(0, 0, 0, .34);
 
-  --grad-a: rgba(66, 211, 146, .26);
+  --grad-a: rgba(52, 211, 153, .24);
   --grad-b: rgba(34, 197, 94, .14);
 }
 
-/* ---------- SAND ---------- */
+/* ---------- SAND (economia real / agro) ---------- */
 html[data-theme="sand"] {
-  --bg: #14110b;
-  --panel: #1c1710;
-  --panel2: #18130c;
+  --bg: #14120c;
+  --panel: #1c1811;
+  --panel2: #17130d;
 
-  --text: #fff3e0;
-  --muted: #e7d2b4;
-  --line: rgba(255, 255, 255, .12);
+  --text: #fff5df;
+  --muted: #d8c4a0;
+  --line: rgba(255, 255, 255, .10);
 
-  --accent: #fbbf24;
-  --accent2: #fde047;
-  --ring: rgba(251, 191, 36, .55);
+  --accent: #eab308;
+  --accent2: #fbbf24;
+  --ring: rgba(234, 179, 8, .38);
 
   --radius: 14px;
   --shadow: 0 12px 28px rgba(0, 0, 0, .42);
 
-  --grad-a: rgba(251, 191, 36, .34);
-  --grad-b: rgba(253, 224, 71, .18);
+  --grad-a: rgba(234, 179, 8, .24);
+  --grad-b: rgba(251, 191, 36, .12);
 }
 
-/* ---------- LIGHT ---------- */
+/* ---------- LIGHT (leitura / estudo) ---------- */
 html[data-theme="light"] {
   --bg: #f4f6fb;
   --panel: #ffffff;
@@ -106,64 +111,68 @@ html[data-theme="light"] {
   --muted: #475569;
   --line: rgba(15, 23, 42, .12);
 
-  --accent: #3b5bff;
+  --accent: #2563eb;
   --accent2: #6366f1;
-  --ring: rgba(59, 91, 255, .35);
+  --ring: rgba(37, 99, 235, .24);
 
   --radius: 14px;
   --shadow: 0 10px 26px rgba(15, 23, 42, .12);
 
-  --grad-a: rgba(59, 91, 255, .20);
-  --grad-b: rgba(99, 102, 241, .12);
+  --grad-a: rgba(37, 99, 235, .10);
+  --grad-b: rgba(99, 102, 241, .08);
 
   --ok: #16a34a;
   --warn: #d97706;
   --bad: #dc2626;
+
+  --surface-1: rgba(15, 23, 42, .03);
+  --surface-2: rgba(15, 23, 42, .05);
+  --surface-3: rgba(15, 23, 42, .08);
 }
 
-/* ---------- Banrisul ---------- */
+/* ---------- Banrisul (institucional) ---------- */
 html[data-theme="banrisul"] {
-  --bg: #000050;
-  --panel: #0a0a3f;
-  --panel2: #060633;
+  --bg: #000b4f;
+  --panel: #09133f;
+  --panel2: #071036;
 
   --text: #eef2ff;
   --muted: #b9c8ff;
   --line: rgba(255, 255, 255, .10);
 
-  --accent: #2FA4FF;
+  --accent: #0094ff;
   --accent2: #35d0ff;
-  --ring: rgba(47, 164, 255, .52);
+  --ring: rgba(0, 148, 255, .38);
 
   --radius: 18px;
   --shadow: 0 14px 42px rgba(0, 0, 0, .48);
 
-  --grad-a: rgba(47, 164, 255, .34);
-  --grad-b: rgba(53, 208, 255, .20);
+  --grad-a: rgba(0, 148, 255, .24);
+  --grad-b: rgba(53, 208, 255, .16);
 }
 
-/* ---------- Banco do Brasil ---------- */
+/* ---------- Banco do Brasil (azul dominante + amarelo destaque) ---------- */
 html[data-theme="bb"] {
-  --bg: #FCFC30;
-  --panel: #0b1230;
-  --panel2: #080f26;
+  --bg: #0b1e5b;
+  --panel: #102770;
+  --panel2: #0c205c;
 
   --text: #f5f7ff;
   --muted: #c9d2ff;
   --line: rgba(255, 255, 255, .12);
 
-  --accent: #465EFF;
-  --accent2: #FCFC30;
-  --ring: rgba(70, 94, 255, .55);
+  --accent: #ffdf00;
+  --accent2: #ffd000;
+  --ring: rgba(255, 223, 0, .30);
 
   --radius: 12px;
-  --shadow: 0 14px 40px rgba(0, 0, 0, .55);
+  --shadow: 0 14px 40px rgba(0, 0, 0, .45);
 
-  --grad-a: rgba(70, 94, 255, .44);
-  --grad-b: rgba(252, 252, 48, .16);
+  --grad-a: rgba(255, 223, 0, .16);
+  --grad-b: rgba(255, 208, 0, .08);
 }
 
-/* ajustes de legibilidade BB */
+/* legibilidade específica do BB */
 html[data-theme="bb"] h1,
 html[data-theme="bb"] h2,
 html[data-theme="bb"] h3,
@@ -171,8 +180,8 @@ html[data-theme="bb"] .hero-title,
 html[data-theme="bb"] .module-title,
 html[data-theme="bb"] .section-title {
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, .55),
-    0 0 4px rgba(0, 0, 0, .35);
+    0 1px 2px rgba(0, 0, 0, .45),
+    0 0 3px rgba(0, 0, 0, .20);
 }
 
 html[data-theme="bb"] .chip,
@@ -180,10 +189,10 @@ html[data-theme="bb"] .tag,
 html[data-theme="bb"] .highlight,
 html[data-theme="bb"] .kpi,
 html[data-theme="bb"] .pill {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
 }
 
-/* ---------- Santander ---------- */
+/* ---------- Santander (vermelho corporativo agressivo) ---------- */
 html[data-theme="santander"] {
   --bg: #1a0a0d;
   --panel: #2a1015;
@@ -195,16 +204,16 @@ html[data-theme="santander"] {
 
   --accent: #ec0000;
   --accent2: #ff6b6b;
-  --ring: rgba(236, 0, 0, .35);
+  --ring: rgba(236, 0, 0, .32);
 
   --radius: 16px;
   --shadow: 0 14px 38px rgba(0, 0, 0, .42);
 
-  --grad-a: rgba(236, 0, 0, .24);
-  --grad-b: rgba(255, 107, 107, .14);
+  --grad-a: rgba(236, 0, 0, .22);
+  --grad-b: rgba(255, 107, 107, .12);
 }
 
-/* ---------- Itaú ---------- */
+/* ---------- Itaú (laranja + azul) ---------- */
 html[data-theme="itau"] {
   --bg: #140d06;
   --panel: #23170c;
@@ -216,16 +225,16 @@ html[data-theme="itau"] {
 
   --accent: #ff7a00;
   --accent2: #0046ad;
-  --ring: rgba(255, 122, 0, .40);
+  --ring: rgba(255, 122, 0, .34);
 
   --radius: 16px;
   --shadow: 0 14px 38px rgba(0, 0, 0, .42);
 
-  --grad-a: rgba(255, 122, 0, .24);
-  --grad-b: rgba(0, 70, 173, .12);
+  --grad-a: rgba(255, 122, 0, .20);
+  --grad-b: rgba(0, 70, 173, .10);
 }
 
-/* ---------- Bloomberg ---------- */
+/* ---------- Bloomberg (terminal financeiro) ---------- */
 html[data-theme="bloomberg"] {
   --bg: #0a0a0a;
   --panel: #121212;
@@ -237,11 +246,11 @@ html[data-theme="bloomberg"] {
 
   --accent: #ff8c00;
   --accent2: #ffd166;
-  --ring: rgba(255, 140, 0, .38);
+  --ring: rgba(255, 140, 0, .30);
 
   --radius: 10px;
   --shadow: 0 12px 32px rgba(0, 0, 0, .55);
 
-  --grad-a: rgba(255, 140, 0, .18);
-  --grad-b: rgba(255, 209, 102, .10);
+  --grad-a: rgba(255, 140, 0, .16);
+  --grad-b: rgba(255, 209, 102, .08);
 }
