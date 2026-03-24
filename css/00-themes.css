@@ -11,13 +11,12 @@
   --warn: #f59e0b;
   --bad: #ef4444;
 
-  /* superfícies auxiliares */
   --surface-1: rgba(255, 255, 255, .04);
   --surface-2: rgba(255, 255, 255, .06);
   --surface-3: rgba(255, 255, 255, .08);
 }
 
-/* ---------- DARK (neutro profissional) ---------- */
+/* ---------- DARK ---------- */
 html[data-theme="dark"] {
   --bg: #0b0f1a;
   --panel: #121829;
@@ -38,7 +37,7 @@ html[data-theme="dark"] {
   --grad-b: rgba(122, 162, 255, .12);
 }
 
-/* ---------- MIDNIGHT (tech / trading) ---------- */
+/* ---------- MIDNIGHT ---------- */
 html[data-theme="midnight"] {
   --bg: #040712;
   --panel: #0c1328;
@@ -59,7 +58,7 @@ html[data-theme="midnight"] {
   --grad-b: rgba(34, 211, 238, .16);
 }
 
-/* ---------- FOREST (ESG / sustentabilidade) ---------- */
+/* ---------- FOREST ---------- */
 html[data-theme="forest"] {
   --bg: #06110a;
   --panel: #0b1c13;
@@ -80,7 +79,7 @@ html[data-theme="forest"] {
   --grad-b: rgba(34, 197, 94, .14);
 }
 
-/* ---------- SAND (economia real / agro) ---------- */
+/* ---------- SAND ---------- */
 html[data-theme="sand"] {
   --bg: #14120c;
   --panel: #1c1811;
@@ -101,7 +100,7 @@ html[data-theme="sand"] {
   --grad-b: rgba(251, 191, 36, .12);
 }
 
-/* ---------- LIGHT (leitura / estudo) ---------- */
+/* ---------- LIGHT ---------- */
 html[data-theme="light"] {
   --bg: #f4f6fb;
   --panel: #ffffff;
@@ -130,7 +129,7 @@ html[data-theme="light"] {
   --surface-3: rgba(15, 23, 42, .08);
 }
 
-/* ---------- Banrisul (institucional) ---------- */
+/* ---------- Banrisul ---------- */
 html[data-theme="banrisul"] {
   --bg: #000b4f;
   --panel: #09133f;
@@ -151,13 +150,12 @@ html[data-theme="banrisul"] {
   --grad-b: rgba(53, 208, 255, .16);
 }
 
-/* ---------- Banco do Brasil (azul dominante + amarelo destaque) ---------- */
+/* ---------- Banco do Brasil ---------- */
 html[data-theme="bb"] {
   --bg: #f2df00;
   --panel: #12307a;
   --panel2: #0d255f;
 
-  /* texto claro para superfícies azuis */
   --text: #f7f9ff;
   --muted: #d7e0ff;
   --line: rgba(255, 255, 255, .14);
@@ -175,9 +173,20 @@ html[data-theme="bb"] {
   /* texto sobre fundo amarelo */
   --text-on-yellow: #18357d;
   --muted-on-yellow: #27468f;
+
+  /* botões outline em áreas amarelas */
+  --bb-outline-bg: rgba(24, 53, 125, .06);
+  --bb-outline-bg-hover: rgba(24, 53, 125, .10);
+  --bb-outline-border: rgba(24, 53, 125, .22);
+  --bb-outline-text: #18357d;
+
+  /* botão principal em áreas amarelas */
+  --bb-solid-bg: #17357f;
+  --bb-solid-text: #ffffff;
+  --bb-solid-border: #17357f;
 }
 
-/* ---------- Santander (vermelho corporativo agressivo) ---------- */
+/* ---------- Santander ---------- */
 html[data-theme="santander"] {
   --bg: #1a0a0d;
   --panel: #2a1015;
@@ -198,7 +207,7 @@ html[data-theme="santander"] {
   --grad-b: rgba(255, 107, 107, .12);
 }
 
-/* ---------- Itaú (laranja + azul) ---------- */
+/* ---------- Itaú ---------- */
 html[data-theme="itau"] {
   --bg: #140d06;
   --panel: #23170c;
@@ -219,7 +228,7 @@ html[data-theme="itau"] {
   --grad-b: rgba(0, 70, 173, .10);
 }
 
-/* ---------- Bloomberg (terminal financeiro) ---------- */
+/* ---------- Bloomberg ---------- */
 html[data-theme="bloomberg"] {
   --bg: #0a0a0a;
   --panel: #121212;

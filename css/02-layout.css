@@ -264,46 +264,49 @@ footer {
 }
 
 /* =========================================================
-   Banco do Brasil — contraste por contexto
+   BANCO DO BRASIL — contraste correto por contexto
    ========================================================= */
 
-/* texto sobre fundo amarelo */
+/* fundo geral amarelo */
 html[data-theme="bb"] body {
   color: var(--text-on-yellow);
 }
 
+/* header no amarelo */
 html[data-theme="bb"] .brand a,
 html[data-theme="bb"] .badge {
   color: var(--text-on-yellow);
 }
 
+/* títulos e textos FORA dos cards azuis */
+html[data-theme="bb"] main.wrap>h1,
+html[data-theme="bb"] main.wrap>h2,
 html[data-theme="bb"] .content>h1,
 html[data-theme="bb"] .content>h2,
-html[data-theme="bb"] .content>h3,
-html[data-theme="bb"] .hero>div:first-child>h1,
-html[data-theme="bb"] .hero>div:first-child>h2,
-html[data-theme="bb"] .hero>div:first-child>h3 {
+html[data-theme="bb"] .content>p,
+html[data-theme="bb"] .content>.muted,
+html[data-theme="bb"] .fb-title,
+html[data-theme="bb"] .fb-sub,
+html[data-theme="bb"] .fb-side>h3,
+html[data-theme="bb"] .fb-side>p {
   color: var(--text-on-yellow);
 }
 
 html[data-theme="bb"] .content>p,
-html[data-theme="bb"] .content>ul,
-html[data-theme="bb"] .content>ol,
 html[data-theme="bb"] .content>.muted,
-html[data-theme="bb"] .hero>div:first-child>p,
-html[data-theme="bb"] .hero>div:first-child>.muted,
-html[data-theme="bb"] .kpi-label {
+html[data-theme="bb"] .fb-sub,
+html[data-theme="bb"] .fb-side>p {
   color: var(--muted-on-yellow);
 }
 
-/* header e pills mantêm leitura clara */
+/* pills do topo continuam legíveis em azul */
 html[data-theme="bb"] .pill,
 html[data-theme="bb"] .pill-feedback,
 html[data-theme="bb"] .actions .settings-btn {
   color: var(--text);
 }
 
-/* superfícies azuis: texto claro */
+/* cards e superfícies azuis */
 html[data-theme="bb"] .card,
 html[data-theme="bb"] .panel,
 html[data-theme="bb"] .box,
@@ -362,4 +365,36 @@ html[data-theme="bb"] .hero-box .muted,
 html[data-theme="bb"] footer,
 html[data-theme="bb"] footer .muted {
   color: var(--muted);
+}
+
+/* botões em áreas amarelas da página de feedback */
+html[data-theme="bb"] .fb-actions .btn,
+html[data-theme="bb"] .fb-mini .btn {
+  background: var(--bb-outline-bg);
+  color: var(--bb-outline-text);
+  border-color: var(--bb-outline-border);
+}
+
+html[data-theme="bb"] .fb-actions .btn:hover,
+html[data-theme="bb"] .fb-mini .btn:hover {
+  background: var(--bb-outline-bg-hover);
+  text-decoration: none;
+}
+
+html[data-theme="bb"] .fb-actions .btn.primary,
+html[data-theme="bb"] .fb-mini .btn.primary {
+  background: var(--bb-solid-bg);
+  color: var(--bb-solid-text);
+  border-color: var(--bb-solid-border);
+}
+
+/* caixa azul da comunidade no feedback continua clara */
+html[data-theme="bb"] .fb-linkbox,
+html[data-theme="bb"] .fb-note {
+  color: var(--text);
+}
+
+html[data-theme="bb"] .fb-linkbox code,
+html[data-theme="bb"] .fb-note strong {
+  color: var(--text);
 }
