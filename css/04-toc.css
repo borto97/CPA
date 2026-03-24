@@ -1,6 +1,3 @@
-/* =========================
-   TOC / Sumário retrátil (nav#toc)
-   ========================= */
 #toc {
   position: fixed;
   top: var(--header-h);
@@ -11,8 +8,8 @@
   overflow: auto;
 
   background: linear-gradient(180deg,
-        color-mix(in srgb, var(--panel) 92%, var(--accent) 8%),
-        color-mix(in srgb, var(--panel2) 92%, var(--accent) 6%));
+      color-mix(in srgb, var(--panel) 92%, var(--accent) 8%),
+      color-mix(in srgb, var(--panel2) 92%, var(--accent) 6%));
   border: 1px solid var(--line);
   border-left: 0;
   border-top-right-radius: var(--radius);
@@ -118,7 +115,6 @@
   background: color-mix(in srgb, var(--accent) 75%, transparent);
 }
 
-/* níveis */
 #toc .toc__item[data-level="2"] .toc__link {
   font-weight: 650;
   color: color-mix(in srgb, var(--text) 92%, var(--muted));
@@ -135,7 +131,6 @@
   opacity: .95;
 }
 
-/* zona sensível na borda esquerda */
 .toc-hover-zone {
   position: fixed;
   left: 0;
@@ -146,7 +141,6 @@
   background: transparent;
 }
 
-/* scrollbar webkit do TOC */
 #toc::-webkit-scrollbar {
   width: 8px;
 }
@@ -156,59 +150,11 @@
 }
 
 #toc::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, .18);
-  border: 2px solid transparent;
-  background-clip: content-box;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, .25);
+  border-radius: 999px;
 }
 
-#toc::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, .28);
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
-
-/* =========================
-   Conteúdo vs TOC (correto)
-   - desktop: fechado -> reserva "alça"
-   - desktop: abre/pina -> empurra conteúdo
-   - mobile: overlay (não mexe no conteúdo)
-   ========================= */
-
-/* desktop/tablet: reserva a alça quando fechado */
-@media (min-width: 961px) {
-  body {
-    padding-left: var(--toc-handle);
-  }
-
-  body.toc-open,
-  body.toc-pinned {
-    padding-left: var(--toc-w);
-  }
-}
-
-/* mobile: TOC overlay */
-@media (max-width: 960px) {
-  body {
-    padding-left: 0;
-  }
-
-  body.toc-open,
-  body.toc-pinned {
-    padding-left: 0;
-  }
-
-  #toc {
-    top: var(--header-h);
-    height: calc(100vh - (var(--header-h) + 18px));
-  }
-}
-
-html[data-theme="light"] #toc .toc__link {
-  color: color-mix(in srgb, var(--text) 70%, var(--muted));
-}
-
-html[data-theme="light"] #toc .toc__link:hover {
-  background: rgba(0, 0, 0, .04);
-  border-color: rgba(0, 0, 0, .10);
+body.toc-pinned .wrap {
+  margin-left: calc((var(--toc-w) - var(--toc-handle)) + 16px);
+  width: min(1200px, calc(100% - 32px - (var(--toc-w) - var(--toc-handle))));
 }

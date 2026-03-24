@@ -1,0 +1,118 @@
+@media (max-width: 900px) {
+
+  .cols-4,
+  .cols-5,
+  .cols-6,
+  .cols-7,
+  .cols-8 {
+    grid-column: span 12;
+  }
+
+  .grid-3,
+  .grid-4,
+  .hero,
+  .fb-formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  body.toc-pinned .wrap {
+    margin-left: auto;
+    width: min(1200px, calc(100% - 32px));
+  }
+}
+
+@media (max-width: 720px) {
+  header .wrap {
+    padding: 10px 12px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .actions {
+    align-self: flex-end;
+  }
+
+  .pill {
+    padding: 7px 10px;
+    border-radius: 12px;
+  }
+
+  .settings-options {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-row {
+    flex-direction: column;
+  }
+
+  .fb-row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .fb-linkbox {
+    grid-template-columns: 1fr;
+  }
+
+  .fb-modalFooter {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .settings-card {
+    max-height: 88vh;
+  }
+
+  #toc {
+    width: min(86vw, 320px);
+  }
+}
+
+@media (max-width: 520px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    width: min(100%, calc(100% - 24px));
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .node {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td,
+  .code,
+  .pill,
+  .node,
+  .wrap {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}

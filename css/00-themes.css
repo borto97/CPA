@@ -1,0 +1,247 @@
+:root {
+  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --header-h: 72px;
+  --toc-w: 320px;
+  --toc-handle: 22px;
+  --toc-edge: 22px;
+
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+}
+
+/* ---------- DARK (padrão) ---------- */
+html[data-theme="dark"] {
+  --bg: #0b1020;
+  --panel: #121a2f;
+  --panel2: #0f1729;
+
+  --text: #eef2ff;
+  --muted: #b7c1dd;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #6ea8ff;
+  --accent2: #7dd3fc;
+  --ring: rgba(110, 168, 255, .35);
+
+  --radius: 18px;
+  --shadow: 0 14px 42px rgba(0, 0, 0, .42);
+
+  --grad-a: rgba(110, 168, 255, .22);
+  --grad-b: rgba(125, 211, 252, .14);
+}
+
+/* ---------- MIDNIGHT ---------- */
+html[data-theme="midnight"] {
+  --bg: #050816;
+  --panel: #0d1226;
+  --panel2: #0a1020;
+
+  --text: #edf3ff;
+  --muted: #b8c8ee;
+  --line: rgba(255, 255, 255, .09);
+
+  --accent: #38bdf8;
+  --accent2: #22d3ee;
+  --ring: rgba(56, 189, 248, .42);
+
+  --radius: 18px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, .45);
+
+  --grad-a: rgba(56, 189, 248, .42);
+  --grad-b: rgba(34, 211, 238, .22);
+}
+
+/* ---------- FOREST ---------- */
+html[data-theme="forest"] {
+  --bg: #07110b;
+  --panel: #0c1b12;
+  --panel2: #0a160f;
+
+  --text: #eafff3;
+  --muted: #b5e9c9;
+  --line: rgba(255, 255, 255, .095);
+
+  --accent: #42d392;
+  --accent2: #22c55e;
+  --ring: rgba(66, 211, 146, .50);
+
+  --radius: 20px;
+  --shadow: 0 10px 26px rgba(0, 0, 0, .34);
+
+  --grad-a: rgba(66, 211, 146, .26);
+  --grad-b: rgba(34, 197, 94, .14);
+}
+
+/* ---------- SAND ---------- */
+html[data-theme="sand"] {
+  --bg: #14110b;
+  --panel: #1c1710;
+  --panel2: #18130c;
+
+  --text: #fff3e0;
+  --muted: #e7d2b4;
+  --line: rgba(255, 255, 255, .12);
+
+  --accent: #fbbf24;
+  --accent2: #fde047;
+  --ring: rgba(251, 191, 36, .55);
+
+  --radius: 14px;
+  --shadow: 0 12px 28px rgba(0, 0, 0, .42);
+
+  --grad-a: rgba(251, 191, 36, .34);
+  --grad-b: rgba(253, 224, 71, .18);
+}
+
+/* ---------- LIGHT ---------- */
+html[data-theme="light"] {
+  --bg: #f4f6fb;
+  --panel: #ffffff;
+  --panel2: #eef1f7;
+
+  --text: #0f172a;
+  --muted: #475569;
+  --line: rgba(15, 23, 42, .12);
+
+  --accent: #3b5bff;
+  --accent2: #6366f1;
+  --ring: rgba(59, 91, 255, .35);
+
+  --radius: 14px;
+  --shadow: 0 10px 26px rgba(15, 23, 42, .12);
+
+  --grad-a: rgba(59, 91, 255, .20);
+  --grad-b: rgba(99, 102, 241, .12);
+
+  --ok: #16a34a;
+  --warn: #d97706;
+  --bad: #dc2626;
+}
+
+/* ---------- Banrisul ---------- */
+html[data-theme="banrisul"] {
+  --bg: #000050;
+  --panel: #0a0a3f;
+  --panel2: #060633;
+
+  --text: #eef2ff;
+  --muted: #b9c8ff;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #2FA4FF;
+  --accent2: #35d0ff;
+  --ring: rgba(47, 164, 255, .52);
+
+  --radius: 18px;
+  --shadow: 0 14px 42px rgba(0, 0, 0, .48);
+
+  --grad-a: rgba(47, 164, 255, .34);
+  --grad-b: rgba(53, 208, 255, .20);
+}
+
+/* ---------- Banco do Brasil ---------- */
+html[data-theme="bb"] {
+  --bg: #FCFC30;
+  --panel: #0b1230;
+  --panel2: #080f26;
+
+  --text: #f5f7ff;
+  --muted: #c9d2ff;
+  --line: rgba(255, 255, 255, .12);
+
+  --accent: #465EFF;
+  --accent2: #FCFC30;
+  --ring: rgba(70, 94, 255, .55);
+
+  --radius: 12px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, .55);
+
+  --grad-a: rgba(70, 94, 255, .44);
+  --grad-b: rgba(252, 252, 48, .16);
+}
+
+/* ajustes de legibilidade BB */
+html[data-theme="bb"] h1,
+html[data-theme="bb"] h2,
+html[data-theme="bb"] h3,
+html[data-theme="bb"] .hero-title,
+html[data-theme="bb"] .module-title,
+html[data-theme="bb"] .section-title {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, .55),
+    0 0 4px rgba(0, 0, 0, .35);
+}
+
+html[data-theme="bb"] .chip,
+html[data-theme="bb"] .tag,
+html[data-theme="bb"] .highlight,
+html[data-theme="bb"] .kpi,
+html[data-theme="bb"] .pill {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
+}
+
+/* ---------- Santander ---------- */
+html[data-theme="santander"] {
+  --bg: #1a0a0d;
+  --panel: #2a1015;
+  --panel2: #210c11;
+
+  --text: #fff3f4;
+  --muted: #f0c7cb;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #ec0000;
+  --accent2: #ff6b6b;
+  --ring: rgba(236, 0, 0, .35);
+
+  --radius: 16px;
+  --shadow: 0 14px 38px rgba(0, 0, 0, .42);
+
+  --grad-a: rgba(236, 0, 0, .24);
+  --grad-b: rgba(255, 107, 107, .14);
+}
+
+/* ---------- Itaú ---------- */
+html[data-theme="itau"] {
+  --bg: #140d06;
+  --panel: #23170c;
+  --panel2: #1d130a;
+
+  --text: #fff4ea;
+  --muted: #eed2ba;
+  --line: rgba(255, 255, 255, .11);
+
+  --accent: #ff7a00;
+  --accent2: #0046ad;
+  --ring: rgba(255, 122, 0, .40);
+
+  --radius: 16px;
+  --shadow: 0 14px 38px rgba(0, 0, 0, .42);
+
+  --grad-a: rgba(255, 122, 0, .24);
+  --grad-b: rgba(0, 70, 173, .12);
+}
+
+/* ---------- Bloomberg ---------- */
+html[data-theme="bloomberg"] {
+  --bg: #0a0a0a;
+  --panel: #121212;
+  --panel2: #0f0f0f;
+
+  --text: #f3f3f3;
+  --muted: #c7c7c7;
+  --line: rgba(255, 255, 255, .10);
+
+  --accent: #ff8c00;
+  --accent2: #ffd166;
+  --ring: rgba(255, 140, 0, .38);
+
+  --radius: 10px;
+  --shadow: 0 12px 32px rgba(0, 0, 0, .55);
+
+  --grad-a: rgba(255, 140, 0, .18);
+  --grad-b: rgba(255, 209, 102, .10);
+}
