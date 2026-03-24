@@ -154,15 +154,22 @@ html[data-theme="banrisul"] {
 /* ---------- Banco do Brasil (azul dominante + amarelo destaque) ---------- */
 html[data-theme="bb"] {
   --bg: #f2df00;
+
   --panel: #12307a;
   --panel2: #0d255f;
 
+  /* texto em cards azuis */
   --text: #f7f9ff;
   --muted: #d7e0ff;
+
   --line: rgba(255, 255, 255, .14);
 
+  /* amarelo BB */
   --accent: #ffdf00;
+
+  /* azul BB */
   --accent2: #1f4aa8;
+
   --ring: rgba(255, 223, 0, .34);
 
   --radius: 12px;
@@ -171,54 +178,9 @@ html[data-theme="bb"] {
   --grad-a: rgba(255, 223, 0, .18);
   --grad-b: rgba(31, 74, 168, .10);
 
-  /* contraste específico do BB */
-  --bb-dark-text: #112a67;
-  --bb-dark-text-2: #0b1e4f;
-  --bb-light-text: #f7f9ff;
-}
-
-/* legibilidade específica do BB */
-html[data-theme="bb"] .hero,
-html[data-theme="bb"] .hero-box,
-html[data-theme="bb"] .hero-title-wrap {
-  color: var(--bb-dark-text);
-}
-
-html[data-theme="bb"] h1,
-html[data-theme="bb"] .hero-title,
-html[data-theme="bb"] .module-title,
-html[data-theme="bb"] .section-title {
-  color: var(--bb-dark-text);
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, .22),
-    0 2px 4px rgba(0, 0, 0, .16);
-}
-
-html[data-theme="bb"] .subtitle,
-html[data-theme="bb"] .lead,
-html[data-theme="bb"] .muted {
-  color: color-mix(in srgb, var(--bb-dark-text) 78%, white);
-}
-
-html[data-theme="bb"] .pill,
-html[data-theme="bb"] .badge,
-html[data-theme="bb"] .tag,
-html[data-theme="bb"] .chip {
-  color: var(--bb-light-text);
-  text-shadow: none;
-}
-
-html[data-theme="bb"] .card,
-html[data-theme="bb"] .panel,
-html[data-theme="bb"] .box,
-html[data-theme="bb"] .section,
-html[data-theme="bb"] .fb-card,
-html[data-theme="bb"] .kv,
-html[data-theme="bb"] .table,
-html[data-theme="bb"] .quiz,
-html[data-theme="bb"] .riskbox,
-html[data-theme="bb"] .node {
-  color: var(--bb-light-text);
+  /* textos sobre fundo amarelo */
+  --text-on-yellow: #18357d;
+  --muted-on-yellow: #27468f;
 }
 
 /* ---------- Santander (vermelho corporativo agressivo) ---------- */
